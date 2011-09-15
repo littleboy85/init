@@ -1,6 +1,4 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/home/xzhang/nerdtree/nerdtree_plugin'
-let g:netrw_dirhist_2='/home/xzhang/nerdtree/plugin'
-let g:netrw_dirhist_3='/usr/local/lib/python2.7/site-packages'
-let g:netrw_dirhist_4='/home/work/sd_setup/venv'
+let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_1='/home/work/apps/SDPublisher/SDPintro'
+let g:netrw_dirhist_2='/home/work/apps/SDPublisher/origin'
