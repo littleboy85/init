@@ -20,6 +20,8 @@ setlocal nosmartindent
 " Now, set up our indentation expression and keys that trigger it.
 setlocal indentexpr=GetJavascriptIndent()
 setlocal indentkeys=0{,0},0),0],!^F,o,O,e
+setlocal shiftwidth=2
+setlocal softtabstop=2
 
 " Only define the function once.
 if exists("*GetJavascriptIndent")
