@@ -18,6 +18,9 @@ if !exists("g:js_indent_log")
 	let g:js_indent_log = 0
 endif
 
+setlocal tabstop=2
+setlocal softtabstop=2
+setlocal shiftwidth=2
 setlocal indentexpr=GetJsIndent(v:lnum)
 setlocal indentkeys=
 

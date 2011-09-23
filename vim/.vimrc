@@ -16,7 +16,7 @@ set fileformat=unix
 set nobackup
 set ignorecase
 set smartcase
-set columns=84
+set columns=95
 
 if &t_Co > 2 || has("gui_running")
     syntax on
@@ -40,6 +40,9 @@ inoremap ( ()<Left>
 inoremap [ []<Left>
 inoremap { {}<Left>
 
+au BufRead,BufNewFile *.py set ft=python.django " For SnipMate
+au BufRead,BufNewFile *.html set ft=htmldjango.html " For SnipMate             
+
 if has('autocmd')
     filetype plugin indent on
     augroup vimrcEx
@@ -51,3 +54,4 @@ if has('autocmd')
                     \ endif
     augroup END
 endif
+
