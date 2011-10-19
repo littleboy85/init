@@ -17,6 +17,7 @@ set nobackup
 set ignorecase
 set smartcase
 set columns=95
+set grepprg=ack-grep\ --smart-case\ --ignore-dir=venv\ --type-add=json=.json
 
 if &t_Co > 2 || has("gui_running")
     syntax on
@@ -39,6 +40,12 @@ inoremap " ""<Left>
 inoremap ( ()<Left>
 inoremap [ []<Left>
 inoremap { {}<Left>
+
+" ACK {{
+vnoremap <F5> "+y:lgrep --ignore-dir=venv <C-R>+ <CR> :lw<CR>
+nnoremap <F5> :execute "lgrep ".expand("<cword>") <CR> :lw<CR>
+inoremap <F5> :execute "lgrep ".expand("<cword>") <CR> :lw<CR>
+" }}
 
 au BufRead,BufNewFile *.py set ft=python.django " For SnipMate
 au BufRead,BufNewFile *.html set ft=htmldjango.html " For SnipMate             
