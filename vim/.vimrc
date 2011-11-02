@@ -18,6 +18,7 @@ set ignorecase
 set smartcase
 set columns=95
 set grepprg=ack-grep\ --smart-case\ --ignore-dir=venv\ --type-add=json=.json
+set clipboard=unnamedplus
 
 if &t_Co > 2 || has("gui_running")
     syntax on
@@ -27,6 +28,10 @@ endif
 if has('mouse')
     set mouse=a
 endif
+
+" this require install xclip
+vmap <C-c> y:call system("xclip -i -selection clipboard", getreg("\""))<CR>:call system("xclip -i", getreg("\""))<CR>
+imap <C-v> <ESC>:call setreg("\"", system("xclip -o -selection clipboard"))<CR>p
 
 map <F12> :NERDTreeToggle<CR>
 imap <F12> <ESC>:NERDTreeToggle<CR>
