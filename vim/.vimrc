@@ -16,7 +16,7 @@ set fileformat=unix
 set nobackup
 set ignorecase
 set smartcase
-set columns=95
+set columns=105
 set grepprg=ack-grep\ --smart-case\ --ignore-dir=venv\ --type-add=json=.json
 set clipboard=unnamedplus
 
