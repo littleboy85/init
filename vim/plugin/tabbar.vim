@@ -54,53 +54,87 @@ endif" %%
 " Mappings and Commands
 " TabBar Keyboard Mappings ~~
 if ! hasmapto('1') || !hasmapto('<M-1>')
-      "gui bindings containing META key, are different from terminal bindings
-      if has('gui_running')
-            "NORMAL mode bindings for gvim
-            noremap <unique> <script> <M-1> :call <SID>Bf_SwitchTo( 1)<CR>:<BS>
-            noremap <unique> <script> <M-2> :call <SID>Bf_SwitchTo( 2)<CR>:<BS>
-            noremap <unique> <script> <M-3> :call <SID>Bf_SwitchTo( 3)<CR>:<BS>
-            noremap <unique> <script> <M-4> :call <SID>Bf_SwitchTo( 4)<CR>:<BS>
-            noremap <unique> <script> <M-5> :call <SID>Bf_SwitchTo( 5)<CR>:<BS>
-            noremap <unique> <script> <M-6> :call <SID>Bf_SwitchTo( 6)<CR>:<BS>
-            noremap <unique> <script> <M-7> :call <SID>Bf_SwitchTo( 7)<CR>:<BS>
-            noremap <unique> <script> <M-8> :call <SID>Bf_SwitchTo( 8)<CR>:<BS>
-            noremap <unique> <script> <M-9> :call <SID>Bf_SwitchTo( 9)<CR>:<BS>
-            noremap <unique> <script> <M-0> :call <SID>Bf_SwitchTo( 10)<CR>:<BS>
-            "INSERT mode bindings for gvim
-            inoremap <unique> <script> <M-1> <esc>:call <SID>Bf_SwitchTo( 1)<CR>:<BS>a
-            inoremap <unique> <script> <M-2> <esc>:call <SID>Bf_SwitchTo( 2)<CR>:<BS>a
-            inoremap <unique> <script> <M-3> <esc>:call <SID>Bf_SwitchTo( 3)<CR>:<BS>a
-            inoremap <unique> <script> <M-4> <esc>:call <SID>Bf_SwitchTo( 4)<CR>:<BS>a
-            inoremap <unique> <script> <M-5> <esc>:call <SID>Bf_SwitchTo( 5)<CR>:<BS>a
-            inoremap <unique> <script> <M-6> <esc>:call <SID>Bf_SwitchTo( 6)<CR>:<BS>a
-            inoremap <unique> <script> <M-7> <esc>:call <SID>Bf_SwitchTo( 7)<CR>:<BS>a
-            inoremap <unique> <script> <M-8> <esc>:call <SID>Bf_SwitchTo( 8)<CR>:<BS>a
-            inoremap <unique> <script> <M-9> <esc>:call <SID>Bf_SwitchTo( 9)<CR>:<BS>a
-            inoremap <unique> <script> <M-0> <esc>:call <SID>Bf_SwitchTo( 10)<CR>:<BS>a
-      else
-            "NORMAL mode bindings for vim( dos32 )
-            noremap <unique> <script> � :call <SID>Bf_SwitchTo( 1)<CR>:<BS>
-            noremap <unique> <script> � :call <SID>Bf_SwitchTo( 2)<CR>:<BS>
-            noremap <unique> <script> � :call <SID>Bf_SwitchTo( 3)<CR>:<BS>
-            noremap <unique> <script> � :call <SID>Bf_SwitchTo( 4)<CR>:<BS>
-            noremap <unique> <script> � :call <SID>Bf_SwitchTo( 5)<CR>:<BS>
-            noremap <unique> <script> � :call <SID>Bf_SwitchTo( 6)<CR>:<BS>
-            noremap <unique> <script> � :call <SID>Bf_SwitchTo( 7)<CR>:<BS>
-            noremap <unique> <script> � :call <SID>Bf_SwitchTo( 8)<CR>:<BS>
-      "else
-            "NORMAL mode bindings for vim( terminal)
-            noremap <unique> <script> 1 :call <SID>Bf_SwitchTo( 1)<CR>:<BS>
-            noremap <unique> <script> 2 :call <SID>Bf_SwitchTo( 2)<CR>:<BS>
-            noremap <unique> <script> 3 :call <SID>Bf_SwitchTo( 3)<CR>:<BS>
-            noremap <unique> <script> 4 :call <SID>Bf_SwitchTo( 4)<CR>:<BS>
-            noremap <unique> <script> 5 :call <SID>Bf_SwitchTo( 5)<CR>:<BS>
-            noremap <unique> <script> 6 :call <SID>Bf_SwitchTo( 6)<CR>:<BS>
-            noremap <unique> <script> 7 :call <SID>Bf_SwitchTo( 7)<CR>:<BS>
-            noremap <unique> <script> 8 :call <SID>Bf_SwitchTo( 8)<CR>:<BS>
-            noremap <unique> <script> 9 :call <SID>Bf_SwitchTo( 9)<CR>:<BS>
-            noremap <unique> <script> 0 :call <SID>Bf_SwitchTo( 10)<CR>:<BS>
-      endif
+    "gui bindings containing META key, are different from terminal bindings
+    if has('gui_macvim')
+        "NORMAL mode bindings for gvim
+        noremap <unique> <script> ¡ :call <SID>Bf_SwitchTo( 1)<CR>:<BS>
+        noremap <unique> <script> ™ :call <SID>Bf_SwitchTo( 2)<CR>:<BS>
+        noremap <unique> <script> £ :call <SID>Bf_SwitchTo( 3)<CR>:<BS>
+        noremap <unique> <script> ¢ :call <SID>Bf_SwitchTo( 4)<CR>:<BS>
+        noremap <unique> <script> ∞ :call <SID>Bf_SwitchTo( 5)<CR>:<BS>
+        noremap <unique> <script> § :call <SID>Bf_SwitchTo( 6)<CR>:<BS>
+        noremap <unique> <script> ¶ :call <SID>Bf_SwitchTo( 7)<CR>:<BS>
+        noremap <unique> <script> • :call <SID>Bf_SwitchTo( 8)<CR>:<BS>
+        noremap <unique> <script> ª :call <SID>Bf_SwitchTo( 9)<CR>:<BS>
+        noremap <unique> <script> º :call <SID>Bf_SwitchTo( 10)<CR>:<BS>
+        "INSERT mode bindings for gvim
+        inoremap <unique> <script> ¡ <esc>:call <SID>Bf_SwitchTo( 1)<CR>:<BS>a
+        inoremap <unique> <script> ™ <esc>:call <SID>Bf_SwitchTo( 2)<CR>:<BS>a
+        inoremap <unique> <script> £ <esc>:call <SID>Bf_SwitchTo( 3)<CR>:<BS>a
+        inoremap <unique> <script> ¢ <esc>:call <SID>Bf_SwitchTo( 4)<CR>:<BS>a
+        inoremap <unique> <script> ∞ <esc>:call <SID>Bf_SwitchTo( 5)<CR>:<BS>a
+        inoremap <unique> <script> § <esc>:call <SID>Bf_SwitchTo( 6)<CR>:<BS>a
+        inoremap <unique> <script> ¶ <esc>:call <SID>Bf_SwitchTo( 7)<CR>:<BS>a
+        inoremap <unique> <script> • <esc>:call <SID>Bf_SwitchTo( 8)<CR>:<BS>a
+        inoremap <unique> <script> ª <esc>:call <SID>Bf_SwitchTo( 9)<CR>:<BS>a
+        inoremap <unique> <script> º <esc>:call <SID>Bf_SwitchTo( 10)<CR>:<BS>a
+    elseif has('gui_running')
+        "NORMAL mode bindings for gvim
+        noremap <unique> <script> <M-1> :call <SID>Bf_SwitchTo( 1)<CR>:<BS>
+        noremap <unique> <script> <M-2> :call <SID>Bf_SwitchTo( 2)<CR>:<BS>
+        noremap <unique> <script> <M-3> :call <SID>Bf_SwitchTo( 3)<CR>:<BS>
+        noremap <unique> <script> <M-4> :call <SID>Bf_SwitchTo( 4)<CR>:<BS>
+        noremap <unique> <script> <M-5> :call <SID>Bf_SwitchTo( 5)<CR>:<BS>
+        noremap <unique> <script> <M-6> :call <SID>Bf_SwitchTo( 6)<CR>:<BS>
+        noremap <unique> <script> <M-7> :call <SID>Bf_SwitchTo( 7)<CR>:<BS>
+        noremap <unique> <script> <M-8> :call <SID>Bf_SwitchTo( 8)<CR>:<BS>
+        noremap <unique> <script> <M-9> :call <SID>Bf_SwitchTo( 9)<CR>:<BS>
+        noremap <unique> <script> <M-0> :call <SID>Bf_SwitchTo( 10)<CR>:<BS>
+        "INSERT mode bindings for gvim
+        inoremap <unique> <script> <M-1> <esc>:call <SID>Bf_SwitchTo( 1)<CR>:<BS>a
+        inoremap <unique> <script> <M-2> <esc>:call <SID>Bf_SwitchTo( 2)<CR>:<BS>a
+        inoremap <unique> <script> <M-3> <esc>:call <SID>Bf_SwitchTo( 3)<CR>:<BS>a
+        inoremap <unique> <script> <M-4> <esc>:call <SID>Bf_SwitchTo( 4)<CR>:<BS>a
+        inoremap <unique> <script> <M-5> <esc>:call <SID>Bf_SwitchTo( 5)<CR>:<BS>a
+        inoremap <unique> <script> <M-6> <esc>:call <SID>Bf_SwitchTo( 6)<CR>:<BS>a
+        inoremap <unique> <script> <M-7> <esc>:call <SID>Bf_SwitchTo( 7)<CR>:<BS>a
+        inoremap <unique> <script> <M-8> <esc>:call <SID>Bf_SwitchTo( 8)<CR>:<BS>a
+        inoremap <unique> <script> <M-9> <esc>:call <SID>Bf_SwitchTo( 9)<CR>:<BS>a
+        inoremap <unique> <script> <M-0> <esc>:call <SID>Bf_SwitchTo( 10)<CR>:<BS>a
+    elseif has('dos32')
+        "NORMAL mode bindings for vim( dos32 )
+        noremap <unique> <script> ? :call <SID>Bf_SwitchTo( 1)<CR>:<BS>
+        noremap <unique> <script> ? :call <SID>Bf_SwitchTo( 2)<CR>:<BS>
+        noremap <unique> <script> ? :call <SID>Bf_SwitchTo( 3)<CR>:<BS>
+        noremap <unique> <script> ? :call <SID>Bf_SwitchTo( 4)<CR>:<BS>
+        noremap <unique> <script> ? :call <SID>Bf_SwitchTo( 5)<CR>:<BS>
+        noremap <unique> <script> ? :call <SID>Bf_SwitchTo( 6)<CR>:<BS>
+        noremap <unique> <script> ? :call <SID>Bf_SwitchTo( 7)<CR>:<BS>
+        noremap <unique> <script> ? :call <SID>Bf_SwitchTo( 8)<CR>:<BS>
+    else
+        "NORMAL mode bindings for vim( terminal)
+        noremap <unique> <script> 1 :call <SID>Bf_SwitchTo( 1)<CR>:<BS>
+        noremap <unique> <script> 2 :call <SID>Bf_SwitchTo( 2)<CR>:<BS>
+        noremap <unique> <script> 3 :call <SID>Bf_SwitchTo( 3)<CR>:<BS>
+        noremap <unique> <script> 4 :call <SID>Bf_SwitchTo( 4)<CR>:<BS>
+        noremap <unique> <script> 5 :call <SID>Bf_SwitchTo( 5)<CR>:<BS>
+        noremap <unique> <script> 6 :call <SID>Bf_SwitchTo( 6)<CR>:<BS>
+        noremap <unique> <script> 7 :call <SID>Bf_SwitchTo( 7)<CR>:<BS>
+        noremap <unique> <script> 8 :call <SID>Bf_SwitchTo( 8)<CR>:<BS>
+        noremap <unique> <script> 9 :call <SID>Bf_SwitchTo( 9)<CR>:<BS>
+        noremap <unique> <script> 0 :call <SID>Bf_SwitchTo( 10)<CR>:<BS>
+        "INSERT mode bindings for vim( terminal)
+        inoremap <unique> <script> 1 <esc>:call <SID>Bf_SwitchTo( 1)<CR>:<BS>a
+        inoremap <unique> <script> 2 <esc>:call <SID>Bf_SwitchTo( 2)<CR>:<BS>a
+        inoremap <unique> <script> 3 <esc>:call <SID>Bf_SwitchTo( 3)<CR>:<BS>a
+        inoremap <unique> <script> 4 <esc>:call <SID>Bf_SwitchTo( 4)<CR>:<BS>a
+        inoremap <unique> <script> 5 <esc>:call <SID>Bf_SwitchTo( 5)<CR>:<BS>a
+        inoremap <unique> <script> 6 <esc>:call <SID>Bf_SwitchTo( 6)<CR>:<BS>a
+        inoremap <unique> <script> 7 <esc>:call <SID>Bf_SwitchTo( 7)<CR>:<BS>a
+        inoremap <unique> <script> 8 <esc>:call <SID>Bf_SwitchTo( 8)<CR>:<BS>a
+        inoremap <unique> <script> 9 <esc>:call <SID>Bf_SwitchTo( 9)<CR>:<BS>a
+        inoremap <unique> <script> 0 <esc>:call <SID>Bf_SwitchTo( 10)<CR>:<BS>a
+    endif
 endif " %%
 
 
