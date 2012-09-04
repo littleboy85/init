@@ -13,6 +13,7 @@ set showmatch
 set incsearch
 set autoindent
 set fileformat=unix
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,default,latin1
 set nobackup
 set ignorecase
 set smartcase
