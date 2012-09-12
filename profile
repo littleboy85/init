@@ -33,7 +33,7 @@ export PYTHON_HOME=/Library/Frameworks/Python.framework/Versions/Current
 alias ll='ls -l'
 set -o vi
 export ANT_OPTS="-Xmx1024m -XX:MaxPermSize=256m"
-source ~/.shotcut.sh
+source ~/.shortcut.sh
 
 
 ##
