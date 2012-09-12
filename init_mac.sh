@@ -10,6 +10,8 @@ $get macvim git svn
 easy_install pip
 pip install virtualenv
 git config --global core.editor "vim"
+git config --global user.name "Xiaohan Zhang"
+git config --global user.email xiaohan.zhang@arts.usask.ca
 
 mv ~/.vim vim.old
 mv ~/.vimrc vimrc.old
