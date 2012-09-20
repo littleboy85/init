@@ -6,7 +6,7 @@ if ! which brew; then
 fi
 get="brew install"
 
-$get macvim git svn
+$get macvim git wget
 easy_install pip
 pip install virtualenv
 git config --global core.editor "vim"
