@@ -33,7 +33,7 @@ export PYTHON_HOME=/Library/Frameworks/Python.framework/Versions/Current
 alias ll='ls -l'
 set -o vi
 export ANT_OPTS="-Xmx1024m -XX:MaxPermSize=256m"
-source ~/.shotcut.sh
+source ~/.shortcut.sh
 
 
 ##
@@ -41,6 +41,6 @@ source ~/.shotcut.sh
 ##
 
 # MacPorts Installer addition on 2012-07-26_at_22:32:27: adding an appropriate PATH variable for use with MacPorts.
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+# export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 # Finished adapting your PATH environment variable for use with MacPorts.
 

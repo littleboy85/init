@@ -21,7 +21,7 @@ set columns=105
 set grepprg=ack-grep\ --smart-case\ --ignore-dir=venv\ --type-add=json=.json
 
 if has('gui_macvim')
-    set guifont=DejaVu\ Sans\ Mono:h14.00
+    set guifont=DejaVu\ Sans\ Mono,Consolas:h14.00
 else
     "set guifont=Consolas:h9:cANSI
     set clipboard=unnamedplus
@@ -44,6 +44,7 @@ imap <C-v> <ESC>:call setreg("\"", system("xclip -o -selection clipboard"))<CR>p
 let NERDTreeIgnore = ['\.pyc$']
 map <F12> :NERDTreeToggle<CR>
 imap <F12> <ESC>:NERDTreeToggle<CR>
+
 map <C-h> <C-W>h
 map <C-j> <C-W>j
 map <C-k> <C-W>k

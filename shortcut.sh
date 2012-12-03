@@ -37,7 +37,7 @@ function gvim {
     else
         vim_parm=$*
     fi
-    /Applications/MacVim.app/Contents/MacOS/Vim -g $vim_parm;
+    /usr/local/Cellar/macvim/7.3-65/MacVim.app/Contents/MacOS/Vim -g $vim_parm;
 }
 
 
