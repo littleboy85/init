@@ -41,6 +41,7 @@ endif
 vmap <C-c> y:call system("xclip -i -selection clipboard", getreg("\""))<CR>:call system("xclip -i", getreg("\""))<CR>
 imap <C-v> <ESC>:call setreg("\"", system("xclip -o -selection clipboard"))<CR>p
 
+let NERDTreeIgnore = ['\.pyc$']
 map <F12> :NERDTreeToggle<CR>
 imap <F12> <ESC>:NERDTreeToggle<CR>
 map <C-h> <C-W>h
