@@ -21,12 +21,15 @@ set columns=105
 set grepprg=ack-grep\ --smart-case\ --ignore-dir=venv\ --type-add=json=.json
 
 if has('gui_macvim')
-    set guifont=DejaVu\ Sans\ Mono:h14.00,\ Consolas:h14
+    if hostname() == 'Xiaohans-iMac.local'
+        set guifont=Andale\ Mono:h14,\ Consolas:h14
+    else
+        set guifont=DejaVu\ Sans\ Mono:h14.00,\ Consolas:h14
+    endif
 else
     "set guifont=Consolas:h9:cANSI
     set clipboard=unnamedplus
 endif
-
 
 if &t_Co > 2 || has("gui_running")
     syntax on

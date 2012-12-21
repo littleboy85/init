@@ -5,10 +5,18 @@ export LSCOLORS=gxfxaxdxcxegedabagacad
 # change prompt
 export PS1="\w\$ "
 
-##
-# DELUXE-USR-LOCAL-BIN-INSERT
-# (do not remove this comment)
-##
+echo $PATH | grep -q -s "/usr/local/share/python"
+if [ $? -eq 1 ] ; then
+    PATH=/usr/local/share/python:$PATH
+    export PATH
+fi
+
+echo $PATH | grep -q -s "/usr/local/sbin"
+if [ $? -eq 1 ] ; then
+    PATH=/usr/local/sbin:$PATH
+    export PATH
+fi
+
 echo $PATH | grep -q -s "/usr/local/bin"
 if [ $? -eq 1 ] ; then
     PATH=/usr/local/bin:$PATH

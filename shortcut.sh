@@ -30,14 +30,4 @@ function pm {
     python manage.py $*
 }
 
-function gvim {
-    if [ "$#" == "0" ]
-    then
-        vim_parm=~/.vim/index.vimproject
-    else
-        vim_parm=$*
-    fi
-    /usr/local/Cellar/macvim/7.3-65/MacVim.app/Contents/MacOS/Vim -g $vim_parm;
-}
-
 
