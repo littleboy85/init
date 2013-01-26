@@ -8,7 +8,7 @@ _js=~/cmpt/js
 
 function arts {
     cmd=$1
-    host=xiz921@arts-asit-1178.usask.ca
+    host=xiz921@arts-drc-1418.usask.ca
     shift
     if [[ "$cmd" == "clone" ]]; then
         git clone ssh://$host/~/git/$1.git
