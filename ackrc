@@ -1,0 +1,4 @@
+--follow
+--smart-case
+--ignore-dir=venv
+-a
