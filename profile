@@ -14,6 +14,12 @@ if [ $? -eq 1 ] ; then
     PATH=/usr/local/bin:$PATH
     export PATH
 fi
+echo $PATH | grep -q -s "/usr/local/sbin"
+if [ $? -eq 1 ] ; then
+    PATH=/usr/local/sbin:$PATH
+    export PATH
+fi
+
 
 # Setting PATH for MacPython 2.6
 # The orginal version is saved in .profile.pysave

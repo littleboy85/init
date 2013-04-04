@@ -19,6 +19,7 @@ set ignorecase
 set smartcase
 set columns=105
 set grepprg=ack-grep\ --smart-case\ --ignore-dir=venv\ --type-add=json=.json
+set iskeyword+=-
 
 if has('gui_macvim')
     set guifont=DejaVu\ Sans\ Mono,Consolas:h14.00
