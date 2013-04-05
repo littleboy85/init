@@ -21,6 +21,9 @@ set columns=105
 set grepprg=ack-grep\ --smart-case\ --ignore-dir=venv\ --type-add=json=.json
 set iskeyword+=-
 
+"enable less support, https://github.com/groenewege/vim-less
+call pathogen#infect()
+
 if has('gui_macvim')
     if hostname() == 'Xiaohans-iMac.local'
         set guifont=Andale\ Mono:h14,\ Consolas:h14
