@@ -21,10 +21,6 @@ function is_function {
     type -t $1 | grep -q 'function'
 }
 
-function go {
-    eval cd \$_$1
-}
-
 function pm {
     source venv/bin/activate
     python manage.py $*
