@@ -51,6 +51,7 @@ imap <C-v> <ESC>:call setreg("\"", system("xclip -o -selection clipboard"))<CR>p
 let NERDTreeIgnore = ['\.pyc$']
 map <F12> :NERDTreeToggle<CR>
 imap <F12> <ESC>:NERDTreeToggle<CR>
+let g:NERDTreeWinSize = 22
 
 map <C-h> <C-W>h
 map <C-j> <C-W>j
