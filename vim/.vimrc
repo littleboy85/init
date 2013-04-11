@@ -17,7 +17,7 @@ set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,default,latin1
 set nobackup
 set ignorecase
 set smartcase
-set columns=105
+set columns=106
 set grepprg=ack-grep\ --smart-case\ --ignore-dir=venv\ --type-add=json=.json
 set iskeyword+=-
 
