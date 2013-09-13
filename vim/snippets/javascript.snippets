@@ -61,7 +61,7 @@ snippet do
 # Object Method
 snippet :f
 	${1:method_name}: function(${2:attribute}) {
-		${4}
+	  ${4}
 	}${3:,}
 # setTimeout function
 snippet timeout
@@ -72,6 +72,8 @@ snippet get
 # Get Element
 snippet gett
 	getElementBy${1:Id}('${2}')${3}
+snippet log
+	console.log(${1});
 snippet def
 	define([${1}], function(${2}) {
 	    ${3}
@@ -80,3 +82,4 @@ snippet req
 	require([${1}], function(${2}) {
 	    ${3}
 	});
+
