@@ -1,4 +1,39 @@
+" no vi-compatible
 set nocompatible
+
+let iCanHazVundle=1
+let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+if !filereadable(vundle_readme)
+    echo "Installing Vundle..."
+    echo ""
+    silent !mkdir -p ~/.vim/bundle
+    silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+    let iCanHazVundle=0
+endif
+
+" required for vundle
+filetype off
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" vim bundle management
+Bundle 'gmarik/vundle'
+" file browser
+Bundle 'scrooloose/nerdtree'
+" Python mode (indentation, doc, refactor, lints, code checking, 
+" motion and operators, highlighting, run and ipdb breakpoints)
+Bundle 'klen/python-mode'
+Bundle 'davidhalter/jedi-vim'
+Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+" Code and files fuzzy finder
+Bundle 'kien/ctrlp.vim'
+" Terminal Vim with 256 colors colorscheme
+Bundle 'fisadev/fisa-vim-colorscheme'
+Bundle "pangloss/vim-javascript"
+Bundle 'groenewege/vim-less'
+
+filetype plugin indent on
 
 colo evening
 set number
@@ -20,9 +55,17 @@ set smartcase
 set columns=106
 set grepprg=ack-grep\ --smart-case\ --ignore-dir=venv\ --type-add=json=.json
 set iskeyword+=-
+set autochdir
 
-"enable less support, https://github.com/groenewege/vim-less
-call pathogen#infect()
+let NERDTreeIgnore = ['\.pyc$']
+map <F12> :NERDTreeToggle<CR>
+imap <F12> <ESC>:NERDTreeToggle<CR>
+let g:NERDTreeWinSize = 22
+
+
+" Powerline setup
+set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 9
+set laststatus=2
 
 if has('gui_macvim')
     if hostname() == 'Xiaohans-iMac.local'
@@ -47,11 +90,6 @@ endif
 " this require install xclip
 vmap <C-c> y:call system("xclip -i -selection clipboard", getreg("\""))<CR>:call system("xclip -i", getreg("\""))<CR>
 imap <C-v> <ESC>:call setreg("\"", system("xclip -o -selection clipboard"))<CR>p
-
-let NERDTreeIgnore = ['\.pyc$']
-map <F12> :NERDTreeToggle<CR>
-imap <F12> <ESC>:NERDTreeToggle<CR>
-let g:NERDTreeWinSize = 22
 
 map <C-h> <C-W>h
 map <C-j> <C-W>j
