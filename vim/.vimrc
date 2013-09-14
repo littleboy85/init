@@ -25,13 +25,13 @@ Bundle 'scrooloose/nerdtree'
 " motion and operators, highlighting, run and ipdb breakpoints)
 Bundle 'klen/python-mode'
 Bundle 'davidhalter/jedi-vim'
-Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 " Code and files fuzzy finder
 Bundle 'kien/ctrlp.vim'
 " Terminal Vim with 256 colors colorscheme
 Bundle 'fisadev/fisa-vim-colorscheme'
 Bundle "pangloss/vim-javascript"
 Bundle 'groenewege/vim-less'
+Bundle 'tpope/vim-fugitive'
 
 filetype plugin indent on
 
@@ -53,7 +53,6 @@ set nobackup
 set ignorecase
 set smartcase
 set columns=106
-set grepprg=ack-grep\ --smart-case\ --ignore-dir=venv\ --type-add=json=.json
 set iskeyword+=-
 set autochdir
 
@@ -62,10 +61,6 @@ map <F12> :NERDTreeToggle<CR>
 imap <F12> <ESC>:NERDTreeToggle<CR>
 let g:NERDTreeWinSize = 22
 
-
-" Powerline setup
-set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 9
-set laststatus=2
 
 if has('gui_macvim')
     if hostname() == 'Xiaohans-iMac.local'
@@ -101,12 +96,6 @@ inoremap " ""<Left>
 inoremap ( ()<Left>
 inoremap [ []<Left>
 inoremap { {}<Left>
-
-" ACK {{
-vnoremap <F5> "+y:lgrep --ignore-dir=venv <C-R>+ <CR> :lw<CR>
-nnoremap <F5> :execute "lgrep ".expand("<cword>") <CR> :lw<CR>
-inoremap <F5> :execute "lgrep ".expand("<cword>") <CR> :lw<CR>
-" }}
 
 au BufRead,BufNewFile *.py set ft=python.django " For SnipMate
 au BufRead,BufNewFile *.html set ft=htmldjango.html " For SnipMate             
