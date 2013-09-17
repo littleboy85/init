@@ -19,19 +19,36 @@ call vundle#rc()
 
 " vim bundle management
 Bundle 'gmarik/vundle'
+
 " file browser
 Bundle 'scrooloose/nerdtree'
+" Ignore files on NERDTree
+let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
+map <F12> :NERDTreeToggle<CR>
+imap <F12> <ESC>:NERDTreeToggle<CR>
+let g:NERDTreeWinSize = 22
+
 " Python mode (indentation, doc, refactor, lints, code checking, 
 " motion and operators, highlighting, run and ipdb breakpoints)
 Bundle 'klen/python-mode'
 Bundle 'davidhalter/jedi-vim'
+
 " Code and files fuzzy finder
 Bundle 'kien/ctrlp.vim'
-" Terminal Vim with 256 colors colorscheme
-Bundle 'fisadev/fisa-vim-colorscheme'
 Bundle "pangloss/vim-javascript"
 Bundle 'groenewege/vim-less'
+
 Bundle 'tpope/vim-fugitive'
+nmap <leader>g :Ggrep
+" ,f for global git serach for word under the cursor (with highlight)
+nmap <leader>f :let @/="\\<<C-R><C-W>\\>"<CR>:set hls<CR>:silent
+            \ Ggrep -w "<C-R><C-W>"<CR>:ccl<CR>:cw<CR><CR>
+" same in visual mode
+:vmap <leader>f y:let @/=escape(@", '\\[]$^*.')<CR>:set hls<CR>:silent
+            \ Ggrep -F "<C-R>=escape(@", '\\"#')<CR>"<CR>:ccl<CR>:cw<CR><CR>
+" key mapping for error navigation
+nmap <leader>[ :cprev<CR>
+nmap <leader>] :cnext<CR>
 
 filetype plugin indent on
 
@@ -55,11 +72,6 @@ set smartcase
 set columns=106
 set iskeyword+=-
 set autochdir
-
-let NERDTreeIgnore = ['\.pyc$']
-map <F12> :NERDTreeToggle<CR>
-imap <F12> <ESC>:NERDTreeToggle<CR>
-let g:NERDTreeWinSize = 22
 
 
 if has('gui_macvim')
