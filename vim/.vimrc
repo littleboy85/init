@@ -50,6 +50,10 @@ nmap <leader>f :let @/="\\<<C-R><C-W>\\>"<CR>:set hls<CR>:silent
 nmap <leader>[ :cprev<CR>
 nmap <leader>] :cnext<CR>
 
+" syntax checker for many languages
+Bundle 'scrooloose/syntastic'
+let g:syntastic_always_populate_loc_list=1
+
 filetype plugin indent on
 
 colo evening
