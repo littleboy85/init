@@ -165,6 +165,18 @@
 "------------------------------------------------
 
 set nocompatible " Get out of VI's compatible mode
+
+" Setting up Vundle - the vim plugin bundler
+let iCanHazVundle=1
+let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+if !filereadable(vundle_readme)
+    echo "Installing Vundle..."
+    echo ""
+    silent !mkdir -p ~/.vim/bundle
+    silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+    let iCanHazVundle=0
+endif
+
 filetype plugin indent on " Enable filetype
 let mapleader=',' " Change the mapleader
 let maplocalleader='\' " Change the maplocalleader
@@ -342,6 +354,13 @@ Bundle 'Shougo/neosnippet'
 Bundle 'honza/vim-snippets'
 Bundle 'xolox/vim-misc'
 Bundle 'wikitopian/hardmode'
+
+" Installing plugins the first time
+if iCanHazVundle == 0
+    echo "Installing Bundles, please ignore key map error messages"
+    echo ""
+    :BundleInstall
+endif
 
 " Local bundles if avaiable
 if filereadable(expand("$HOME/.vimrc.bundles.local"))
