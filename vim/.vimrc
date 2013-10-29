@@ -285,6 +285,7 @@ Bundle 'mhinz/vim-startify'
 if has('signs')
     Bundle 'airblade/vim-gitgutter'
 endif
+
 " Navigation
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'terryma/vim-multiple-cursors'
@@ -342,6 +343,8 @@ Bundle 'elzr/vim-json'
 Bundle 'groenewege/vim-less'
 Bundle 'pangloss/vim-javascript'
 Bundle 'kepbod/php_indent'
+Bundle 'vim-scripts/sql.vim--Stinson'
+Bundle 'django.vim'
 
 " Others
 if executable('ctags')
@@ -354,13 +357,6 @@ Bundle 'Shougo/neosnippet'
 Bundle 'honza/vim-snippets'
 Bundle 'xolox/vim-misc'
 Bundle 'wikitopian/hardmode'
-
-" Installing plugins the first time
-if iCanHazVundle == 0
-    echo "Installing Bundles, please ignore key map error messages"
-    echo ""
-    :BundleInstall
-endif
 
 " Local bundles if avaiable
 if filereadable(expand("$HOME/.vimrc.bundles.local"))
@@ -610,7 +606,8 @@ set foldtext=MyFoldText()
 " QuickFix
 augroup ft_quickfix
     autocmd!
-    autocmd Filetype qf setlocal colorcolumn=0 nolist nocursorline nowrap textwidth=0
+    autocmd Filetype qf setlocal colorcolumn=0 
+                \nolist nocursorline nowrap textwidth=0
 augroup END
 
 " Markdown
@@ -628,11 +625,13 @@ augroup ft_markdown
     autocmd Filetype markdown vnoremap <buffer> <localLeader>b :s/^/> /<CR>
     " Use <localLeader>ul and <localLeader>ol to add list symbols in visual mode
     autocmd Filetype markdown vnoremap <buffer> <localLeader>ul :s/^/* /<CR>
-    autocmd Filetype markdown vnoremap <buffer> <LocalLeader>ol :s/^/\=(line(".")-line("'<")+1).'. '/<CR>
+    autocmd Filetype markdown vnoremap <buffer> 
+                \<LocalLeader>ol :s/^/\=(line(".")-line("'<")+1).'. '/<CR>
     " Use <localLeader>e1/2/3 to add emphasis symbols
     autocmd Filetype markdown nnoremap <buffer> <localLeader>e1 I*<ESC>A*<ESC>
     autocmd Filetype markdown nnoremap <buffer> <localLeader>e2 I**<ESC>A**<ESC>
-    autocmd Filetype markdown nnoremap <buffer> <localLeader>e3 I***<ESC>A***<ESC>
+    autocmd Filetype markdown nnoremap <buffer> 
+                \<localLeader>e3 I***<ESC>A***<ESC>
     " Use <Leader>P to preview markdown file in browser
     autocmd Filetype markdown nnoremap <buffer> <Leader>P :MarkdownPreview<CR>
 augroup END
@@ -687,7 +686,7 @@ augroup ft_python
         echo "1. Python2+\n"
         echo "2. Python3+\n"
         let flag=getchar()
-        if flag==49jjkjljkhlj
+        if flag==49
             call SingleCompile#ChooseCompiler('python', 'python')
             execute 'SingleCompileRun'
         elseif flag==50
@@ -830,10 +829,11 @@ nnoremap <Leader>d :NERDTreeTabsToggle<CR>
 nnoremap <Leader>f :NERDTreeFind<CR>
 let NERDTreeChDirMode=2
 let NERDTreeShowBookmarks=1
-let NERDTreeShowHidden=1
+let NERDTreeShowHidden=0
 let NERDTreeShowLineNumbers=1
 let NERDTreeDirArrows=1
 let g:nerdtree_tabs_open_on_gui_startup=0
+let NERDTreeIgnore = ['\.pyc$']
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "--------------------------------------------------
@@ -854,6 +854,7 @@ let g:neocomplcache_enable_at_startup=1
 let g:neocomplcache_enable_auto_delimiter=1
 let g:neocomplcache_enable_camel_case_completion=1
 let g:neocomplcache_enable_underbar_completion=1
+let g:neocomplcache_enable_smart_case = 1
 
 let g:snips_author='Xiao-Ou Zhang'
 let g:snips_email='kepbod@gmail.com'
@@ -872,9 +873,12 @@ xmap <C-K> <Plug>(neosnippet_expand_target)
 inoremap <expr><C-E> neocomplcache#cancel_popup()
 
 " SuperTab like snippets behavior
-inoremap <expr><Tab> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-N>" : "\<Tab>"
-snoremap <expr><Tab> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<Tab>"
-inoremap <expr><S-Tab> pumvisible() ? "\<C-P>" : "\<S-Tab>"
+imap <expr><Tab> neosnippet#expandable()
+            \? '\<Plug>(neosnippet_expand_or_jump)'
+            \: pumvisible() ? "\<C-N>" : "\<Tab>"
+smap <expr><Tab> neosnippet#expandable() 
+            \? "\<Plug>(neosnippet_expand_or_jump)" : "\<Tab>"
+imap <expr><S-Tab> pumvisible() ? "\<C-P>" : "\<S-Tab>"
 
 " CR/S-CR: close popup and save indent
 inoremap <expr><CR> delimitMate#WithinEmptyPair() ? "\<C-R>=delimitMate#ExpandReturn()\<CR>" : pumvisible() ? neocomplcache#close_popup() : "\<CR>"
