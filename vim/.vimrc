@@ -542,14 +542,6 @@ set hlsearch " Highlight search terms
 set incsearch " Find as you type search
 set gdefault " turn on 'g' flag
 
-" Use sane regexes
-nnoremap / /\v
-vnoremap / /\v
-cnoremap s/ s/\v
-nnoremap ? ?\v
-vnoremap ? ?\v
-cnoremap s? s?\v
-
 " Keep search matches in the middle of the window
 nnoremap n nzzzv
 nnoremap N Nzzzv
@@ -873,12 +865,9 @@ xmap <C-K> <Plug>(neosnippet_expand_target)
 inoremap <expr><C-E> neocomplcache#cancel_popup()
 
 " SuperTab like snippets behavior
-imap <expr><Tab> neosnippet#expandable()
-            \? '\<Plug>(neosnippet_expand_or_jump)'
-            \: pumvisible() ? "\<C-N>" : "\<Tab>"
-smap <expr><Tab> neosnippet#expandable() 
-            \? "\<Plug>(neosnippet_expand_or_jump)" : "\<Tab>"
-imap <expr><S-Tab> pumvisible() ? "\<C-P>" : "\<S-Tab>"
+imap <expr><Tab> neosnippet#expandable() ? '<Plug>(neosnippet_expand_or_jump)' : pumvisible() ? "<C-N>" : "<Tab>"
+smap <expr><Tab> neosnippet#expandable() ? '<Plug>(neosnippet_expand_or_jump)' : '<Tab>'
+imap <expr><S-Tab> pumvisible() ? '<C-P>' : '<S-Tab>'
 
 " CR/S-CR: close popup and save indent
 inoremap <expr><CR> delimitMate#WithinEmptyPair() ? "\<C-R>=delimitMate#ExpandReturn()\<CR>" : pumvisible() ? neocomplcache#close_popup() : "\<CR>"
