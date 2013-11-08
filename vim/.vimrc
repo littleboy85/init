@@ -658,6 +658,12 @@ augroup ft_python
         "                         400)
         "   open_paren_at_EOL(
         "       100, 200, 300, 400)
+        " dictionary close with dedent
+        " E.g. 
+        "   dict = {
+        "       'a': 1,
+        "       'b': 2,
+        "   }
         call cursor(a:lnum, 1)
         let [par_line, par_col] = searchpairpos('(\|{\|\[', '', ')\|}\|\]', 'bW',
                     \ "line('.') < " . (a:lnum - s:maxoff) . " ? dummy :"
@@ -667,6 +673,9 @@ augroup ft_python
             call cursor(par_line, 1)
             if par_col != col("$") - 1
                 return par_col
+            endif
+            if getline(a:lnum) =~ '^\s*}'
+                return indent(par_line)
             endif
         endif
         " Delegate the rest to the original function.
@@ -687,8 +696,8 @@ augroup ft_python
         endif
     endfunction
 
-    let pyindent_nested_paren="&sw*2"
-    let pyindent_open_paren="&sw*2"
+    let pyindent_nested_paren="&sw"
+    let pyindent_open_paren="&sw"
 
     autocmd!
     autocmd filetype python setlocal indentexpr=GetGooglePythonIndent(v:lnum)
@@ -865,8 +874,7 @@ xmap <C-K> <Plug>(neosnippet_expand_target)
 inoremap <expr><C-E> neocomplcache#cancel_popup()
 
 " SuperTab like snippets behavior
-imap <expr><Tab> neosnippet#expandable() ? '<Plug>(neosnippet_expand_or_jump)' : pumvisible() ? "<C-N>" : "<Tab>"
-smap <expr><Tab> neosnippet#expandable() ? '<Plug>(neosnippet_expand_or_jump)' : '<Tab>'
+imap <expr><Tab> pumvisible() ? '<C-N>' : '<Tab>'
 imap <expr><S-Tab> pumvisible() ? '<C-P>' : '<S-Tab>'
 
 " CR/S-CR: close popup and save indent
