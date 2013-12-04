@@ -151,10 +151,6 @@
 "   > vim-matchit - https://github.com/tsaleh/vim-matchit
 "     Extend matching with "%"
 "     info -> :help matchit.txt
-"   > vim-gitgutter - https://github.com/airblade/vim-gitgutter
-"     Show a git diff in the 'gutter' (sign column).
-"     info -> :help gitgutter.txt
-"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
@@ -282,9 +278,6 @@ endif
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'chrisbra/NrrwRgn'
 Bundle 'mhinz/vim-startify'
-if has('signs')
-    Bundle 'airblade/vim-gitgutter'
-endif
 
 " Navigation
 Bundle 'Lokaltog/vim-easymotion'
@@ -329,8 +322,7 @@ Bundle 'xuhdev/SingleCompile'
 " Automatic Helper
 Bundle 'Shougo/neocomplcache'
 Bundle 'Raimondi/delimitMate'
-Bundle 'scrooloose/syntastic'
-Bundle 'tpope/vim-speeddating'
+" Bundle 'scrooloose/syntastic'
 " Language related
 Bundle 'tpope/vim-rails'
 Bundle 'mattn/emmet-vim'
@@ -540,7 +532,6 @@ set ignorecase " Case insensitive search
 set smartcase " Case sensitive when uc present
 set hlsearch " Highlight search terms
 set incsearch " Find as you type search
-set gdefault " turn on 'g' flag
 
 " Keep search matches in the middle of the window
 nnoremap n nzzzv
@@ -921,6 +912,7 @@ nnoremap <Leader>s :Errors<CR>
 let g:syntastic_check_on_open=1
 let g:syntastic_auto_jump=1
 let g:syntastic_stl_format='[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
+let g:syntastic_enable_highlighting=0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
