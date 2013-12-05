@@ -127,9 +127,6 @@
 "   > unite-outline - https://github.com/h1mesuke/unite-outline
 "     Provide your Vim's buffer with the outline view
 "     info -> :help unite-outline.txt
-"   > Swap-parameters - https://github.com/mutewinter/swap-parameters
-"     Swap the parameters
-"     info -> :help swap-parameters.txt
 "   > autolink.vim - https://github.com/sampsyo/autolink.vim
 "     Find and insert URLs for links in Markdown and ReST documents
 "     info -> :help autolink.txt
@@ -208,8 +205,8 @@ function! InitializeDirectories()
     let dir_list={
                 \ 'backup': 'backupdir',
                 \ 'view': 'viewdir',
-                \ 'swap': 'directory',
                 \ 'undo': 'undodir'}
+                "\ 'swap': 'directory',
     for [dirname, settingname] in items(dir_list)
         let directory=parent.'/'.prefix.'/'.dirname.'/'
         if !isdirectory(directory)
@@ -315,14 +312,12 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-abolish'
 Bundle 'godlygeek/tabular'
 Bundle 'AndrewRadev/splitjoin.vim'
-if has('python')
-    Bundle 'mutewinter/swap-parameters'
-endif
 Bundle 'xuhdev/SingleCompile'
 " Automatic Helper
-Bundle 'Shougo/neocomplcache'
+" Bundle 'Shougo/neocomplcache'
+Bundle 'Valloric/YouCompleteMe'
 Bundle 'Raimondi/delimitMate'
-" Bundle 'scrooloose/syntastic'
+Bundle 'scrooloose/syntastic'
 " Language related
 Bundle 'tpope/vim-rails'
 Bundle 'mattn/emmet-vim'
@@ -339,9 +334,9 @@ Bundle 'vim-scripts/sql.vim--Stinson'
 Bundle 'django.vim'
 
 " Others
-if executable('ctags')
-    Bundle 'xolox/vim-easytags'
-endif
+"if executable('ctags')
+    "Bundle 'xolox/vim-easytags'
+"endif
 Bundle 'h1mesuke/unite-outline'
 Bundle 'tpope/vim-repeat'
 Bundle 'jistr/vim-nerdtree-tabs'
@@ -846,7 +841,8 @@ let g:neocomplcache_enable_at_startup=1
 let g:neocomplcache_enable_auto_delimiter=1
 let g:neocomplcache_enable_camel_case_completion=1
 let g:neocomplcache_enable_underbar_completion=1
-let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_enable_smart_case = 0
+let g:neocomplcache_disable_auto_complete = 1
 
 let g:snips_author='Xiao-Ou Zhang'
 let g:snips_email='kepbod@gmail.com'
