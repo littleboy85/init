@@ -621,13 +621,13 @@ augroup ft_less
 augroup END
 
 " JSON
-augroup ft_json
-    autocmd!
-    " Disable concealing of double quotes
-    autocmd filetype json setlocal conceallevel=0
-    " Added folding of {...} and [...] blocks
-    autocmd filetype json setlocal foldmethod=syntax
-augroup END
+" augroup ft_json
+    " autocmd!
+    " " Disable concealing of double quotes
+    " autocmd filetype json setlocal conceallevel=0
+    " " Added folding of {...} and [...] blocks
+    " autocmd filetype json setlocal foldmethod=syntax
+" augroup END
 
 " Python
 augroup ft_python
@@ -833,17 +833,6 @@ let NERDRemoveExtraSpaces=1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"--------------------------------------------------
-" => Neocomplcache
-"--------------------------------------------------
-
-let g:neocomplcache_enable_at_startup=1
-let g:neocomplcache_enable_auto_delimiter=1
-let g:neocomplcache_enable_camel_case_completion=1
-let g:neocomplcache_enable_underbar_completion=1
-let g:neocomplcache_enable_smart_case = 0
-let g:neocomplcache_disable_auto_complete = 1
-
 let g:snips_author='Xiao-Ou Zhang'
 let g:snips_email='kepbod@gmail.com'
 let g:snips_github='https://github.com/kepbod'
@@ -857,16 +846,9 @@ imap <C-K> <Plug>(neosnippet_expand_or_jump)
 smap <C-K> <Plug>(neosnippet_expand_or_jump)
 xmap <C-K> <Plug>(neosnippet_expand_target)
 
-" Map <C-E> to cancel completion
-inoremap <expr><C-E> neocomplcache#cancel_popup()
-
 " SuperTab like snippets behavior
 imap <expr><Tab> pumvisible() ? '<C-N>' : '<Tab>'
 imap <expr><S-Tab> pumvisible() ? '<C-P>' : '<S-Tab>'
-
-" CR/S-CR: close popup and save indent
-inoremap <expr><CR> delimitMate#WithinEmptyPair() ? "\<C-R>=delimitMate#ExpandReturn()\<CR>" : pumvisible() ? neocomplcache#close_popup() : "\<CR>"
-inoremap <expr><S-CR> pumvisible() ? neocomplcache#close_popup() "\<CR>" : "\<CR>"
 
 " For snippet_complete marker
 if has('conceal')
