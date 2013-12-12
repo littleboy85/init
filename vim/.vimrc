@@ -133,9 +133,6 @@
 "   > textobj-word-column.vim - https://github.com/coderifous/textobj-word-column.vim
 "     Make operating on columns of code conceptually simpler and reduces keystrokes
 "     info -> :help textobj-word-column.txt
-"   > GoldenView.vim - https://github.com/zhaocai/GoldenView.Vim
-"     Manage windows more convenient
-"     info -> :help GoldenView.txt
 "   > vim-startify - https://github.com/mhinz/vim-startify
 "     Provide a good start screen for vim
 "     info -> :help startify.txt
@@ -275,6 +272,7 @@ endif
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'chrisbra/NrrwRgn'
 Bundle 'mhinz/vim-startify'
+Bundle 'fholgado/minibufexpl.vim'
 
 " Navigation
 Bundle 'Lokaltog/vim-easymotion'
@@ -283,7 +281,7 @@ Bundle 'bkad/CamelCaseMotion'
 Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'coderifous/textobj-word-column.vim'
 Bundle 'tpope/vim-unimpaired'
-Bundle 'zhaocai/GoldenView.Vim'
+"Bundle 'zhaocai/GoldenView.Vim'
 if has('python')
     Bundle 'sjl/gundo.vim'
 else
@@ -621,13 +619,13 @@ augroup ft_less
 augroup END
 
 " JSON
-" augroup ft_json
+augroup ft_json
     " autocmd!
-    " " Disable concealing of double quotes
-    " autocmd filetype json setlocal conceallevel=0
+    " Disable concealing of double quotes
+    autocmd filetype json setlocal conceallevel=0
     " " Added folding of {...} and [...] blocks
     " autocmd filetype json setlocal foldmethod=syntax
-" augroup END
+augroup END
 
 " Python
 augroup ft_python
@@ -727,14 +725,22 @@ vnoremap k gk
 " Navigation between windows
 nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
+nnoremap <C-H> <C-W>h
+nnoremap <C-L> <C-W>l
+
+nnoremap <Leader>1 :b1<CR>
+nnoremap <Leader>2 :b2<CR>
+nnoremap <Leader>3 :b3<CR>
+nnoremap <Leader>4 :b4<CR>
+nnoremap <Leader>5 :b5<CR>
+nnoremap <Leader>6 :b6<CR>
+nnoremap <Leader>7 :b7<CR>
+nnoremap <Leader>8 :b8<CR>
+nnoremap <Leader>9 :b9<CR>
 
 " Same when jumping around
 nnoremap g; g;zz
 nnoremap g, g,zz
-
-" Reselect visual block after indent/outdent
-vnoremap < <gv
-vnoremap > >gv
 
 " Repeat last substitution, including flags, with &.
 nnoremap & :&&<CR>
@@ -891,6 +897,7 @@ let g:syntastic_check_on_open=1
 let g:syntastic_auto_jump=1
 let g:syntastic_stl_format='[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 let g:syntastic_enable_highlighting=0
+let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -982,16 +989,6 @@ let g:user_emmet_settings={'indentation':'    '}
 let g:use_emmet_complete_tag=1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"--------------------------------------------------
-" => GoldenView
-"--------------------------------------------------
-
-let g:goldenview__enable_default_mapping=0
-nmap <silent> <C-O> <Plug>GoldenViewSplit
-nmap <silent> <C-G> <Plug>GoldenViewSwitchToggle
-nmap <silent> <C-H> <Plug>GoldenViewNext
-nmap <silent> <C-L> <Plug>GoldenViewPrevious
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
