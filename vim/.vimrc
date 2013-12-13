@@ -620,12 +620,28 @@ augroup END
 
 " JSON
 augroup ft_json
-    " autocmd!
+    autocmd!
     " Disable concealing of double quotes
     autocmd filetype json setlocal conceallevel=0
     " " Added folding of {...} and [...] blocks
     " autocmd filetype json setlocal foldmethod=syntax
+    autocmd Filetype json setlocal shiftwidth=2 softtabstop=2
 augroup END
+
+" javascript
+augroup ft_javascript
+    autocmd!
+    autocmd Filetype javascript setlocal shiftwidth=2 softtabstop=2
+    autocmd Filetype javascript let g:indent_guides_guide_size=2
+augroup END
+
+" html
+augroup ft_html
+    autocmd!
+    autocmd Filetype html setlocal shiftwidth=2 softtabstop=2
+    autocmd Filetype html let g:indent_guides_guide_size=2
+augroup END
+
 
 " Python
 augroup ft_python
@@ -897,6 +913,7 @@ let g:syntastic_check_on_open=1
 let g:syntastic_auto_jump=1
 let g:syntastic_stl_format='[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 let g:syntastic_enable_highlighting=0
+let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_html_tidy_ignore_errors=[
             \" proprietary attribute \"ng-",
             \" proprietary attribute \"x-",
