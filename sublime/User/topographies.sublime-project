@@ -1,0 +1,10 @@
+{
+	"folders":
+	[
+		{
+			"follow_symlinks": true,
+			"path": "/Users/xiz921/project/grubstreet/topographies",
+			"folder_exclude_patterns": ["Resources", "userdata"],
+		}
+	]
+}
