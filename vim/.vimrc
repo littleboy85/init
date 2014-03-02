@@ -860,7 +860,8 @@ let g:snips_email='kepbod@gmail.com'
 let g:snips_github='https://github.com/kepbod'
 
 " Tell Neosnippet about the other snippets
-let g:neosnippet#snippets_directory="$HOME/.vim/bundle/vim-snippets/snippets"
+" let g:neosnippet#snippets_directory="$HOME/.vim/bundle/vim-snippets/snippets"
+let g:neosnippet#snippets_directory="$HOME/.vim/snippets"
 let g:neosnippet#enable_snipmate_compatibility=1
 
 " Plugin key-mappings
