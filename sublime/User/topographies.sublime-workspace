@@ -1,0 +1,203 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"pack in",
+				"Package Control: Install Package"
+			],
+			[
+				"Set Ja",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"Set P",
+				"Set Syntax: Python"
+			]
+		],
+		"width": 467.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/xiz921/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/xiz921/project/grubstreet/topographies/css/sidebar.less",
+		"/Users/xiz921/project/grubstreet/topographies/lib/seadragon-ajax-0.8.9/doc/Seadragon.EventManager.html",
+		"/Users/xiz921/project/grubstreet/topographies/lib/seadragon-ajax-0.8.9/doc/Seadragon.TileSource.html",
+		"/Users/xiz921/project/grubstreet/topographies/lib/supermodel/test/index.html",
+		"/Users/xiz921/project/grubstreet/topographies/userdata/amuri/1553-59 London (Strype, 1720)/Streets and Buildings.xml",
+		"/Users/xiz921/project/grubstreet/topographies/userdata/cnygren/1720 London (Strype)/Representations of Night in Gay and Hogarth.xml",
+		"/Users/xiz921/project/grubstreet/topographies/lib/backbone/package.json",
+		"/Users/xiz921/project/grubstreet/topographies/userdata/amuri/1720 London (Strype)/Prisons.xml",
+		"/Users/xiz921/project/grubstreet/topographies/lib/ckeditor/plugins/preview/preview.html",
+		"/Users/xiz921/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/Users/xiz921/project/grubstreet/topographies/scripts/require.js",
+		"/Users/xiz921/project/grubstreet/topographies/lib/raphael.js",
+		"/Users/xiz921/project/grubstreet/topographies/test.html",
+		"/Users/xiz921/project/grubstreet/api/tests.py",
+		"/Users/xiz921/project/grubstreet/venv/lib/python2.7/site-packages/django/contrib/gis/gdal/tests/test_envelope.py",
+		"/Users/xiz921/project/grubstreet/todo",
+		"/Users/xiz921/Library/Application Support/Sublime Text 3/Packages/SublimeCodeIntel/SublimeCodeIntel.sublime-settings"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"ignored_pa",
+			"meta",
+			"ru",
+			"rulers",
+			"line",
+			"lime"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "topographies.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"res",
+				"scripts/models/rest.js"
+			],
+			[
+				"test.js",
+				"topographies/scripts/test.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
