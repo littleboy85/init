@@ -314,6 +314,8 @@ Bundle 'xuhdev/SingleCompile'
 " Automatic Helper
 " Bundle 'Shougo/neocomplcache'
 Bundle 'Valloric/YouCompleteMe'
+" auto complete javascript support
+Bundle 'marijnh/tern_for_vim'
 Bundle 'Raimondi/delimitMate'
 Bundle 'scrooloose/syntastic'
 " Language related
