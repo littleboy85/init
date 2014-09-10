@@ -142,9 +142,6 @@
 "   > vim-multiple-cursors - https://github.com/terryma/vim-multiple-cursors
 "     Provide Sublime Text's awesome multiple selection feature to vim
 "     info -> :help multiple_cursors.txt
-"   > vim-matchit - https://github.com/tsaleh/vim-matchit
-"     Extend matching with "%"
-"     info -> :help matchit.txt
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
@@ -303,7 +300,6 @@ endif
 if has('ruby')
     Bundle 'benmills/vimux'
 endif
-Bundle 'tsaleh/vim-matchit'
 " Commands
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'tpope/vim-surround'
@@ -342,7 +338,7 @@ Bundle 'tpope/vim-repeat'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'Shougo/neosnippet-snippets'
 Bundle 'Shougo/neosnippet'
-Bundle 'honza/vim-snippets'
+"Bundle 'honza/vim-snippets'
 Bundle 'xolox/vim-misc'
 Bundle 'wikitopian/hardmode'
 
@@ -864,8 +860,8 @@ let g:snips_github='https://github.com/kepbod'
 
 " Tell Neosnippet about the other snippets
 " let g:neosnippet#snippets_directory="$HOME/.vim/bundle/vim-snippets/snippets"
-let g:neosnippet#snippets_directory="$HOME/.vim/snippets"
 let g:neosnippet#enable_snipmate_compatibility=1
+let g:neosnippet#snippets_directory="~/.vim/snippets"
 
 " Plugin key-mappings
 imap <C-K> <Plug>(neosnippet_expand_or_jump)
