@@ -300,6 +300,7 @@ endif
 if has('ruby')
     Bundle 'benmills/vimux'
 endif
+" Bundle 'tsaleh/vim-matchit'
 " Commands
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'tpope/vim-surround'
@@ -311,7 +312,7 @@ Bundle 'xuhdev/SingleCompile'
 " Bundle 'Shougo/neocomplcache'
 Bundle 'Valloric/YouCompleteMe'
 " auto complete javascript support
-Bundle 'marijnh/tern_for_vim'
+Plugin 'marijnh/tern_for_vim'
 Bundle 'Raimondi/delimitMate'
 Bundle 'scrooloose/syntastic'
 " Language related
@@ -328,6 +329,7 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'kepbod/php_indent'
 Bundle 'vim-scripts/sql.vim--Stinson'
 Bundle 'django.vim'
+Bundle 'hynek/vim-python-pep8-indent'
 
 " Others
 "if executable('ctags')
@@ -341,6 +343,9 @@ Bundle 'Shougo/neosnippet'
 "Bundle 'honza/vim-snippets'
 Bundle 'xolox/vim-misc'
 Bundle 'wikitopian/hardmode'
+
+" change root dir by find git
+Bundle 'airblade/vim-rooter'
 
 " Local bundles if avaiable
 if filereadable(expand("$HOME/.vimrc.bundles.local"))
@@ -641,69 +646,6 @@ augroup ft_html
     autocmd Filetype html let g:indent_guides_guide_size=2
 augroup END
 
-
-" Python
-augroup ft_python
-
-    " Indent Python in the Google way.
-    let s:maxoff = 50 " maximum number of lines to look backwards.
-    function! GetGooglePythonIndent(lnum)
-        " Indent inside parens.
-        " Align with the open paren unless it is at the end of the line.
-        " E.g.
-        "   open_paren_not_at_EOL(100,
-        "                         (200,
-        "                          300),
-        "                         400)
-        "   open_paren_at_EOL(
-        "       100, 200, 300, 400)
-        " dictionary close with dedent
-        " E.g. 
-        "   dict = {
-        "       'a': 1,
-        "       'b': 2,
-        "   }
-        call cursor(a:lnum, 1)
-        let [par_line, par_col] = searchpairpos('(\|{\|\[', '', ')\|}\|\]', 'bW',
-                    \ "line('.') < " . (a:lnum - s:maxoff) . " ? dummy :"
-                    \ . " synIDattr(synID(line('.'), col('.'), 1), 'name')"
-                    \ . " =~ '\\(Comment\\|String\\)$'")
-        if par_line > 0
-            call cursor(par_line, 1)
-            if par_col != col("$") - 1
-                return par_col
-            endif
-            if getline(a:lnum) =~ '^\s*}'
-                return indent(par_line)
-            endif
-        endif
-        " Delegate the rest to the original function.
-        return GetPythonIndent(a:lnum)
-    endfunction
-
-    function! ChoosePythonCompiler()
-        echo "Please choose python compiler:\n"
-        echo "1. Python2+\n"
-        echo "2. Python3+\n"
-        let flag=getchar()
-        if flag==49
-            call SingleCompile#ChooseCompiler('python', 'python')
-            execute 'SingleCompileRun'
-        elseif flag==50
-            call SingleCompile#ChooseCompiler('python', 'python3')
-            execute 'SingleCompileRun'
-        endif
-    endfunction
-
-    let pyindent_nested_paren="&sw"
-    let pyindent_open_paren="&sw"
-
-    autocmd!
-    autocmd filetype python setlocal indentexpr=GetGooglePythonIndent(v:lnum)
-    autocmd filetype python nnoremap <buffer> <Leader>r :call ChoosePythonCompiler()<CR>
-
-augroup END
-
 " Perl
 augroup ft_perl
     let perl_include_pod=1
@@ -915,9 +857,10 @@ let g:syntastic_stl_format='[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 let g:syntastic_enable_highlighting=0
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_html_tidy_ignore_errors=[
+            \"trimming empty",
             \" proprietary attribute \"ng-",
             \" proprietary attribute \"x-",
-            \"proprietary attribute \"role\"",
+            \" proprietary attribute \"role\"",
             \"proprietary attribute \"hidden\""
             \]
 
@@ -945,7 +888,7 @@ let g:indent_guides_guide_size=1
 if executable('git')
     nnoremap <silent> <leader>gs :Gstatus<CR>
     nnoremap <silent> <leader>gd :Gdiff<CR>
-    nnoremap <silent> <leader>gc :Gcommit<CR>
+    nnoremap <silent> <leader>gc :Gcommit -a<CR>
     nnoremap <silent> <leader>gb :Gblame<CR>
     nnoremap <silent> <leader>gl :Glog<CR>
     nnoremap <silent> <leader>gp :Git push<CR>
@@ -1030,8 +973,9 @@ let g:splitjoin_align=1
 "--------------------------------------------------
 
 let g:unite_enable_start_insert=1
+call unite#custom#source('file_rec', 'ignore_pattern', '\.\(pyc\|png\|gif\|jpg\)$')
 nnoremap <Leader>m :Unite<Space>
-nnoremap <C-P> :Unite file_rec<CR>
+nnoremap <C-P> :Unite file_rec:!<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "--------------------------------------------------
