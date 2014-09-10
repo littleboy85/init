@@ -252,100 +252,100 @@ let g:vundle_default_git_proto='git'
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 " Let Vundle manage Vundle
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
 " UI Additions
-Bundle 'w0ng/vim-hybrid'
-Bundle 'chriskempson/vim-tomorrow-theme'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'nanotech/jellybeans.vim'
+Plugin 'w0ng/vim-hybrid'
+Plugin 'chriskempson/vim-tomorrow-theme'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'nanotech/jellybeans.vim'
 if has("python") || has("python3")
-    Bundle 'Lokaltog/powerline', {'rtp':'/powerline/bindings/vim'}
+    Plugin 'Lokaltog/powerline', {'rtp':'/powerline/bindings/vim'}
     let airline=0
 else
-    Bundle 'bling/vim-airline'
+    Plugin 'bling/vim-airline'
     let airline=1
 endif
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'chrisbra/NrrwRgn'
-Bundle 'mhinz/vim-startify'
-Bundle 'fholgado/minibufexpl.vim'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'chrisbra/NrrwRgn'
+Plugin 'mhinz/vim-startify'
+Plugin 'fholgado/minibufexpl.vim'
 
 " Navigation
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'terryma/vim-multiple-cursors'
-Bundle 'bkad/CamelCaseMotion'
-Bundle 'michaeljsmith/vim-indent-object'
-Bundle 'coderifous/textobj-word-column.vim'
-Bundle 'tpope/vim-unimpaired'
-"Bundle 'zhaocai/GoldenView.Vim'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'bkad/CamelCaseMotion'
+Plugin 'michaeljsmith/vim-indent-object'
+Plugin 'coderifous/textobj-word-column.vim'
+Plugin 'tpope/vim-unimpaired'
+"Plugin 'zhaocai/GoldenView.Vim'
 if has('python')
-    Bundle 'sjl/gundo.vim'
+    Plugin 'sjl/gundo.vim'
 else
-    Bundle 'mbbill/undotree'
+    Plugin 'mbbill/undotree'
 endif
 if executable('ctags')
-    Bundle 'majutsushi/tagbar'
+    Plugin 'majutsushi/tagbar'
 endif
-Bundle 'Shougo/unite.vim'
-Bundle 'scrooloose/nerdtree'
+Plugin 'Shougo/unite.vim'
+Plugin 'scrooloose/nerdtree'
 if executable('ag')
-    Bundle 'rking/ag.vim'
+    Plugin 'rking/ag.vim'
 elseif executable('ack-grep') || executable('ack')
-    Bundle 'mileszs/ack.vim'
+    Plugin 'mileszs/ack.vim'
 endif
 if executable('git')
-    Bundle 'tpope/vim-fugitive'
+    Plugin 'tpope/vim-fugitive'
 endif
 if has('ruby')
-    Bundle 'benmills/vimux'
+    Plugin 'benmills/vimux'
 endif
-" Bundle 'tsaleh/vim-matchit'
+" Plugin 'tsaleh/vim-matchit'
 " Commands
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-abolish'
-Bundle 'godlygeek/tabular'
-Bundle 'AndrewRadev/splitjoin.vim'
-Bundle 'xuhdev/SingleCompile'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-abolish'
+Plugin 'godlygeek/tabular'
+Plugin 'AndrewRadev/splitjoin.vim'
+Plugin 'xuhdev/SingleCompile'
 " Automatic Helper
-" Bundle 'Shougo/neocomplcache'
-Bundle 'Valloric/YouCompleteMe'
+" Plugin 'Shougo/neocomplcache'
+Plugin 'Valloric/YouCompleteMe'
 " auto complete javascript support
 Plugin 'marijnh/tern_for_vim'
-Bundle 'Raimondi/delimitMate'
-Bundle 'scrooloose/syntastic'
+Plugin 'Raimondi/delimitMate'
+Plugin 'scrooloose/syntastic'
 " Language related
-Bundle 'tpope/vim-rails'
-Bundle 'mattn/emmet-vim'
-Bundle 'swaroopch/vim-markdown-preview'
-Bundle 'sampsyo/autolink.vim'
-Bundle 'LaTeX-Box-Team/LaTeX-Box'
-Bundle 'juvenn/mustache.vim'
-Bundle 'othree/html5.vim'
-Bundle 'elzr/vim-json'
-Bundle 'groenewege/vim-less'
-Bundle 'pangloss/vim-javascript'
-Bundle 'kepbod/php_indent'
-Bundle 'vim-scripts/sql.vim--Stinson'
-Bundle 'django.vim'
-Bundle 'hynek/vim-python-pep8-indent'
+Plugin 'tpope/vim-rails'
+Plugin 'mattn/emmet-vim'
+Plugin 'swaroopch/vim-markdown-preview'
+Plugin 'sampsyo/autolink.vim'
+Plugin 'LaTeX-Box-Team/LaTeX-Box'
+Plugin 'juvenn/mustache.vim'
+Plugin 'othree/html5.vim'
+Plugin 'elzr/vim-json'
+Plugin 'groenewege/vim-less'
+Plugin 'pangloss/vim-javascript'
+Plugin 'kepbod/php_indent'
+Plugin 'vim-scripts/sql.vim--Stinson'
+Plugin 'django.vim'
+Plugin 'hynek/vim-python-pep8-indent'
 
 " Others
 "if executable('ctags')
-    "Bundle 'xolox/vim-easytags'
+    "Plugin 'xolox/vim-easytags'
 "endif
-Bundle 'h1mesuke/unite-outline'
-Bundle 'tpope/vim-repeat'
-Bundle 'jistr/vim-nerdtree-tabs'
-Bundle 'Shougo/neosnippet-snippets'
-Bundle 'Shougo/neosnippet'
-"Bundle 'honza/vim-snippets'
-Bundle 'xolox/vim-misc'
-Bundle 'wikitopian/hardmode'
+Plugin 'h1mesuke/unite-outline'
+Plugin 'tpope/vim-repeat'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'Shougo/neosnippet-snippets'
+Plugin 'Shougo/neosnippet'
+"Plugin 'honza/vim-snippets'
+Plugin 'xolox/vim-misc'
+Plugin 'wikitopian/hardmode'
 
 " change root dir by find git
-Bundle 'airblade/vim-rooter'
+Plugin 'airblade/vim-rooter'
 
 " Local bundles if avaiable
 if filereadable(expand("$HOME/.vimrc.bundles.local"))
