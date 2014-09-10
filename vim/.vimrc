@@ -288,7 +288,27 @@ if executable('ctags')
     Plugin 'majutsushi/tagbar'
 endif
 Plugin 'Shougo/unite.vim'
+
+" Plugin 'Shougo/vimfiler.vim'
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"--------------------------------------------------
+" => VimFiler
+"--------------------------------------------------
+" let g:vimfiler_as_default_explorer = 1
+" let g:vimfiler_ignore_pattern = '^\%(.git\|.DS_Store\|*.pyc\)$'
+" call vimfiler#custom#profile('default', 'context', {
+" \   'safe': 0
+" \ })
+" nnoremap <Leader>d :VimFilerExplorer -find<CR>
+" autocmd FileType vimfiler nmap <buffer><expr> l vimfiler#smart_cursor_map(
+" \ "\<Plug>(vimfiler_expand_tree)",
+" \ "\<Plug>(vimfiler_edit_file)"
+" \ )
+
+
 Plugin 'scrooloose/nerdtree'
+" Plugin 'jistr/vim-nerdtree-tabs'
+
 if executable('ag')
     Plugin 'rking/ag.vim'
 elseif executable('ack-grep') || executable('ack')
@@ -326,7 +346,6 @@ Plugin 'othree/html5.vim'
 Plugin 'elzr/vim-json'
 Plugin 'groenewege/vim-less'
 Plugin 'pangloss/vim-javascript'
-Plugin 'kepbod/php_indent'
 Plugin 'vim-scripts/sql.vim--Stinson'
 Plugin 'django.vim'
 Plugin 'hynek/vim-python-pep8-indent'
@@ -337,7 +356,6 @@ Plugin 'hynek/vim-python-pep8-indent'
 "endif
 Plugin 'h1mesuke/unite-outline'
 Plugin 'tpope/vim-repeat'
-Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'Shougo/neosnippet-snippets'
 Plugin 'Shougo/neosnippet'
 "Plugin 'honza/vim-snippets'
@@ -757,6 +775,18 @@ if has('gui_running')
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"--------------------------------------------------
+" => NERD_tree
+"--------------------------------------------------
+nnoremap <Leader>d :NERDTreeToggle<CR>
+nnoremap <Leader>f :NERDTreeFind<CR>
+let NERDTreeChDirMode=2
+let NERDTreeShowBookmarks=1
+let NERDTreeShowHidden=0
+let NERDTreeShowLineNumbers=1
+let NERDTreeDirArrows=1
+let g:nerdtree_tabs_open_on_gui_startup=0
+let NERDTreeIgnore = ['\.pyc$']
 
 "--------------------------------------------------
 " => Tagbar
@@ -769,21 +799,7 @@ let g:tagbar_foldlevel=2
 let g:tagbar_ironchars=['▾', '▸']
 let g:tagbar_autoshowtag=1
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"--------------------------------------------------
-" => NERD_tree
-"--------------------------------------------------
-
-nnoremap <Leader>d :NERDTreeTabsToggle<CR>
-nnoremap <Leader>f :NERDTreeFind<CR>
-let NERDTreeChDirMode=2
-let NERDTreeShowBookmarks=1
-let NERDTreeShowHidden=0
-let NERDTreeShowLineNumbers=1
-let NERDTreeDirArrows=1
-let g:nerdtree_tabs_open_on_gui_startup=0
-let NERDTreeIgnore = ['\.pyc$']
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "--------------------------------------------------
@@ -863,21 +879,6 @@ let g:syntastic_html_tidy_ignore_errors=[
             \" proprietary attribute \"role\"",
             \"proprietary attribute \"hidden\""
             \]
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"--------------------------------------------------
-" => Indent Guides
-"--------------------------------------------------
-
-if !has('gui_running')
-    let g:indent_guides_auto_colors=0
-    autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=237
-    autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=239
-endif
-
-let g:indent_guides_enable_on_vim_startup=1
-let g:indent_guides_guide_size=1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -997,6 +998,22 @@ def flush; end unless Object.new.respond_to?(:flush)
 end
 EOF
 endif
+
+"--------------------------------------------------
+" => Indent Guides
+"--------------------------------------------------
+
+if !has('gui_running')
+    let g:indent_guides_auto_colors=0
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=237
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=239
+endif
+
+let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_guide_size=1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "--------------------------------------------------
