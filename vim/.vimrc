@@ -1,183 +1,18 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"
-" Maintainer: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
-" Created: 2012-01-20
-" Last Modified: 2013-07-21
-"
-" Sections:
-"   -> General
-"   -> Platform Specific Configuration
-"   -> Plugin
-"   -> Vim User Interface
-"   -> Colors and Fonts
-"   -> Indent and Tab Related
-"   -> Search Related
-"   -> Fold Related
-"   -> Filetype Specific
-"   -> Key Mapping
-"   -> Local Setting
-"
-"   -> Tagbar
-"   -> NERD_tree
-"   -> NERD_commenter
-"   -> Neocomplcache
-"   -> delimitMate
-"   -> Ag(Ack)
-"   -> Syntastic
-"   -> Indent Guides
-"   -> fugitive
-"   -> Gundo(Undotree)
-"   -> EasyTags
-"   -> SingleCompile
-"   -> Emmet
-"   -> GoldenView
-"   -> Splitjoin
-"   -> Unite
-"   -> vimux
-"   -> startify
-"
-" Plugins_Included:
-"   > Vundle - https://github.com/gmarik/vundle
-"     Manage the Vim scripts
-"     info -> :help vundle.txt
-"   > Tagbar - https://github.com/majutsushi/tagbar
-"     Browse the tags of source code files
-"     info -> :help tagbar.txt
-"   > NERD_tree - https://github.com/scrooloose/nerdtree
-"     Explore filesystem and to open files and directories
-"     info -> :help NERD_tree.txt
-"   > NERD_commenter - https://github.com/scrooloose/nerdcommenter
-"     Provide many different commenting operations and styles
-"     info -> :help NERD_commenter.txt
-"   > Neocomplcache - https://github.com/Shougo/neocomplcache
-"     Performs keyword completion by maintaining a cache of keywords
-"     info -> :help neocomplcache.txt
-"   > surround - https://github.com/tpope/vim-surround
-"     Provide mappings to delete, change and add surroundings in pairs
-"     info -> :help surround.txt
-"   > delimitMate - https://github.com/Raimondi/delimitMate
-"     Provides automatic closing of quotes, parenthesis, brackets, etc.
-"     info -> :help delimitMate.txt
-"   > Ag - https://github.com/rking/ag.vim
-"     A front for ag, A.K.A. the_silver_searcher
-"     info -> :help ag.txt
-"   > Ack - https://github.com/mileszs/ack.vim
-"     A replacement for 'grep' using Perl module App::Ack
-"     info -> :help ack.txt
-"   > Tabular - https://github.com/godlygeek/tabular
-"     Line up text easily
-"     info -> :help Tabular.txt
-"   > Syntastic - https://github.com/scrooloose/syntastic
-"     Syntax check that runs files through external syntax checkers
-"     info -> :help syntastic.txt
-"   > EasyMotion - https://github.com/Lokaltog/vim-easymotion
-"     Provide a much simpler way to use some motions in Vim
-"     info -> :help easymotion.txt
-"   > Indent Guides - https://github.com/nathanaelkane/vim-indent-guides
-"     Visually display indent levels in Vim
-"     info -> :help indent_guides.txt
-"   > fugitive - https://github.com/tpope/vim-fugitive
-"     Git wrapper
-"     info -> :help fugitive.txt
-"   > Gundo - https://github.com/sjl/gundo.vim
-"     Visualize Vim undo tree
-"     info -> :help gundo.txt
-"   > EasyTags - https://github.com/xolox/vim-easytags
-"     Automated tag generation and syntax highlighting in Vim
-"     info -> :help easytags.txt
-"   > Powerline - https://github.com/Lokaltog/powerline
-"     Create better-looking, more functional Vim statuslines
-"     info -> https://powerline.readthedocs.org
-"   > SingleCompile - https://github.com/xuhdev/SingleCompile
-"     Compile or run a single source file without leaving Vim
-"     info -> :help SingleCompile.txt
-"   > CamelCaseMotion - https://github.com/bkad/CamelCaseMotion
-"     Refine words motion in Vim
-"     info -> :help camelcasemotion.txt
-"   > emmet-vim - https://github.com/mattn/emmet-vim
-"     High-speed HTML, XML, XSL coding and editing
-"     info -> :help emmet.txt
-"   > Splitjoin - https://github.com/AndrewRadev/splitjoin.vim
-"     Switch between a single-line statement and a multi-line one
-"     info -> :help splitjoin.txt
-"   > Unite - https://github.com/Shougo/unite.vim
-"     Search and display information from arbitrary sources
-"     info -> :help unite.txt
-"   > rails.vim - https://github.com/tpope/vim-rails
-"     Plugin for working with Ruby on Rails applications
-"     info -> :help rails.txt
-"   > Indent Object - https://github.com/michaeljsmith/vim-indent-object
-"     Text objects based on indent levels
-"     info -> :help indent-object.txt
-"   > NrrwRgn - https://github.com/chrisbra/NrrwRgn
-"     Focus on a region and making the rest inaccessible
-"     info -> :help NrrwRgn.txt
-"   > unimpaired.vim - https://github.com/tpope/vim-unimpaired
-"     Complementary pairs of mappings
-"     info -> :help unimpaired.txt
-"   > abolish.vim - https://github.com/tpope/vim-abolish
-"     Search for, substitute, and abbreviate multiple variants of a word
-"     info -> :help abolish.txt
-"   > vimux - https://github.com/benmills/vimux
-"     Easily interact with tmux from vim
-"     info -> :help vimux.txt
-"   > markdown-preview - https://github.com/swaroopch/vim-markdown-preview
-"     Select Markdown text, render to HTML and preview in browser
-"     info -> https://github.com/swaroopch/vim-markdown-preview/blob/master/README.md
-"   > unite-outline - https://github.com/h1mesuke/unite-outline
-"     Provide your Vim's buffer with the outline view
-"     info -> :help unite-outline.txt
-"   > autolink.vim - https://github.com/sampsyo/autolink.vim
-"     Find and insert URLs for links in Markdown and ReST documents
-"     info -> :help autolink.txt
-"   > textobj-word-column.vim - https://github.com/coderifous/textobj-word-column.vim
-"     Make operating on columns of code conceptually simpler and reduces keystrokes
-"     info -> :help textobj-word-column.txt
-"   > vim-startify - https://github.com/mhinz/vim-startify
-"     Provide a good start screen for vim
-"     info -> :help startify.txt
-"   > vim-speeddating - https://github.com/tpope/vim-speeddating
-"     Use CTRL-A/CTRL-X to increment dates, times, and more
-"     info -> :help speeddating.txt
-"   > vim-multiple-cursors - https://github.com/terryma/vim-multiple-cursors
-"     Provide Sublime Text's awesome multiple selection feature to vim
-"     info -> :help multiple_cursors.txt
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"------------------------------------------------
-" => General
-"------------------------------------------------
-
-set nocompatible " Get out of VI's compatible mode
-
-" Setting up Vundle - the vim plugin bundler
-let iCanHazVundle=1
-let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
-if !filereadable(vundle_readme)
-    echo "Installing Vundle..."
-    echo ""
-    silent !mkdir -p ~/.vim/bundle
-    silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
-    let iCanHazVundle=0
-endif
-
-filetype plugin indent on " Enable filetype
-let mapleader=',' " Change the mapleader
-let maplocalleader='\' " Change the maplocalleader
-set timeoutlen=500 " Time to wait for a command
-
-" Source the vimrc file after saving it
-autocmd BufWritePost .vimrc source $MYVIMRC
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"-------------------------------------------------
+" => Basic VIM settings
+"-------------------------------------------------
+filetype plugin indent on
+let mapleader=','
+let maplocalleader='\'
+set timeoutlen=500
+" auto source vimrc after save
+autocmd BufWritePost .vimrc source $MYVIMRC 
 " Fast edit the .vimrc file using ',x'
-nnoremap <Leader>x :tabedit $MYVIMRC<CR>
-
+nnoremap <Leader>x :tabedit $MYVIMRC<CR> 
 set autoread " Set autoread when a file is changed outside
 set autowrite " Write on make/shell commands
 set hidden " Turn on hidden"
-
 set history=1000 " Increase the lines of history
 set clipboard+=unnamed " Yanks go on clipboard instead
 set spell " Spell checking on
@@ -185,12 +20,14 @@ set modeline " Turn on modeline
 set encoding=utf-8 " Set utf-8 encoding
 set completeopt+=longest " Optimize auto complete
 set completeopt-=preview " Optimize auto complete
-
 set mousehide " Hide mouse after chars typed
 set mouse=a " Mouse in all modes
-
 set backup " Set backup
 set undofile " Set undo
+" No sound on errors
+set noerrorbells
+set novisualbell
+set t_vb=
 
 " Set directories
 function! InitializeDirectories()
@@ -221,11 +58,6 @@ call InitializeDirectories()
 autocmd BufWinLeave *.* silent! mkview " Make Vim save view (state) (folds, cursor, etc)
 autocmd BufWinEnter *.* silent! loadview " Make Vim load view (state) (folds, cursor, etc)
 
-" No sound on errors
-set noerrorbells
-set novisualbell
-set t_vb=
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "-------------------------------------------------
@@ -241,10 +73,25 @@ set viewoptions+=slash,unix " Better Unix/Windows compatibility
 set viewoptions-=options " in case of mapping change
 set fileformats=unix,mac,dos " Auto detect the file formats
 
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "--------------------------------------------------
-" => Plugin
+" => vundle setup
+"--------------------------------------------------
+set nocompatible
+let iCanHazVundle=1
+let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+if !filereadable(vundle_readme)
+    echo "Installing Vundle..."
+    echo ""
+    silent !mkdir -p ~/.vim/bundle
+    silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+    let iCanHazVundle=0
+endif
+
+"--------------------------------------------------
+" => Plugins
 "--------------------------------------------------
 
 filetype off " Required!
@@ -254,11 +101,13 @@ call vundle#rc()
 " Let Vundle manage Vundle
 Plugin 'gmarik/vundle'
 
-" UI Additions
-Plugin 'w0ng/vim-hybrid'
+" colour scheme
+Plugin 'w0ng/vim-hybrid' 
 Plugin 'chriskempson/vim-tomorrow-theme'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'nanotech/jellybeans.vim'
+
+" UI Additions
 if has("python") || has("python3")
     Plugin 'Lokaltog/powerline', {'rtp':'/powerline/bindings/vim'}
     let airline=0
@@ -267,44 +116,26 @@ else
     let airline=1
 endif
 Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'chrisbra/NrrwRgn'
-Plugin 'mhinz/vim-startify'
-Plugin 'fholgado/minibufexpl.vim'
+" Plugin 'mhinz/vim-startify'
+" Plugin 'fholgado/minibufexpl.vim'
 
 " Navigation
-Plugin 'Lokaltog/vim-easymotion'
+" Plugin 'Lokaltog/vim-easymotion'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'bkad/CamelCaseMotion'
-Plugin 'michaeljsmith/vim-indent-object'
-Plugin 'coderifous/textobj-word-column.vim'
-Plugin 'tpope/vim-unimpaired'
-"Plugin 'zhaocai/GoldenView.Vim'
-if has('python')
-    Plugin 'sjl/gundo.vim'
-else
-    Plugin 'mbbill/undotree'
-endif
+" Plugin 'michaeljsmith/vim-indent-object'
+" Plugin 'coderifous/textobj-word-column.vim'
+" Plugin 'tpope/vim-unimpaired'
+" Plugin 'zhaocai/GoldenView.Vim'
+" if has('python')
+    " Plugin 'sjl/gundo.vim'
+" else
+    " Plugin 'mbbill/undotree'
+" endif
 if executable('ctags')
     Plugin 'majutsushi/tagbar'
 endif
 Plugin 'Shougo/unite.vim'
-
-" Plugin 'Shougo/vimfiler.vim'
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"--------------------------------------------------
-" => VimFiler
-"--------------------------------------------------
-" let g:vimfiler_as_default_explorer = 1
-" let g:vimfiler_ignore_pattern = '^\%(.git\|.DS_Store\|*.pyc\)$'
-" call vimfiler#custom#profile('default', 'context', {
-" \   'safe': 0
-" \ })
-" nnoremap <Leader>d :VimFilerExplorer -find<CR>
-" autocmd FileType vimfiler nmap <buffer><expr> l vimfiler#smart_cursor_map(
-" \ "\<Plug>(vimfiler_expand_tree)",
-" \ "\<Plug>(vimfiler_edit_file)"
-" \ )
-
 
 Plugin 'scrooloose/nerdtree'
 " Plugin 'jistr/vim-nerdtree-tabs'
@@ -317,50 +148,29 @@ endif
 if executable('git')
     Plugin 'tpope/vim-fugitive'
 endif
-if has('ruby')
-    Plugin 'benmills/vimux'
-endif
-" Plugin 'tsaleh/vim-matchit'
-" Commands
+
+" Short Cuts 
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-abolish'
-Plugin 'godlygeek/tabular'
 Plugin 'AndrewRadev/splitjoin.vim'
-Plugin 'xuhdev/SingleCompile'
+
 " Automatic Helper
-" Plugin 'Shougo/neocomplcache'
 Plugin 'Valloric/YouCompleteMe'
-" auto complete javascript support
-Plugin 'marijnh/tern_for_vim'
-Plugin 'Raimondi/delimitMate'
+Plugin 'marijnh/tern_for_vim' " auto complete js support
+Plugin 'Raimondi/delimitMate' " auto close quotes, parenthesise, brackets, etc.
+Plugin 'SirVer/ultisnips' " snip
+Plugin 'honza/vim-snippets'
+
+" syntax error check
 Plugin 'scrooloose/syntastic'
+
 " Language related
-Plugin 'tpope/vim-rails'
-Plugin 'mattn/emmet-vim'
-Plugin 'swaroopch/vim-markdown-preview'
-Plugin 'sampsyo/autolink.vim'
-Plugin 'LaTeX-Box-Team/LaTeX-Box'
-Plugin 'juvenn/mustache.vim'
-Plugin 'othree/html5.vim'
 Plugin 'elzr/vim-json'
 Plugin 'groenewege/vim-less'
 Plugin 'pangloss/vim-javascript'
 Plugin 'vim-scripts/sql.vim--Stinson'
 Plugin 'django.vim'
 Plugin 'hynek/vim-python-pep8-indent'
-
-" Others
-"if executable('ctags')
-    "Plugin 'xolox/vim-easytags'
-"endif
-Plugin 'h1mesuke/unite-outline'
-Plugin 'tpope/vim-repeat'
-Plugin 'Shougo/neosnippet-snippets'
-Plugin 'Shougo/neosnippet'
-"Plugin 'honza/vim-snippets'
-Plugin 'xolox/vim-misc'
-Plugin 'wikitopian/hardmode'
+" Plugin 'mattn/emmet-vim'
 
 " change root dir by find git
 Plugin 'airblade/vim-rooter'
@@ -448,6 +258,7 @@ set scrolljump=5 " Lines to scroll when cursor leaves screen
 set scrolloff=3 " Minimum lines to keep above and below cursor
 set sidescroll=1 " Minimal number of columns to scroll horizontally
 set sidescrolloff=10 " Minimal number of screen columns to keep away from cursor
+set columns=118
 
 set showmatch " Show matching brackets/parenthesis
 set matchtime=2 " Decrease the time to blink
@@ -774,6 +585,17 @@ if has('gui_running')
     endif
 endif
 
+"--------------------------------------------------
+" => Tagbar
+"--------------------------------------------------
+nnoremap <Leader>t :TagbarToggle<CR>
+let g:tagbar_autofocus=1
+let g:tagbar_expand=1
+let g:tagbar_foldlevel=2
+let g:tagbar_ironchars=['▾', '▸']
+let g:tagbar_autoshowtag=1
+autocmd VimEnter * nested :call tagbar#autoopen(1)
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "--------------------------------------------------
 " => NERD_tree
@@ -787,19 +609,8 @@ let NERDTreeShowLineNumbers=1
 let NERDTreeDirArrows=1
 let g:nerdtree_tabs_open_on_gui_startup=0
 let NERDTreeIgnore = ['\.pyc$']
-
-"--------------------------------------------------
-" => Tagbar
-"--------------------------------------------------
-
-nnoremap <Leader>t :TagbarToggle<CR>
-let g:tagbar_autofocus=1
-let g:tagbar_expand=1
-let g:tagbar_foldlevel=2
-let g:tagbar_ironchars=['▾', '▸']
-let g:tagbar_autoshowtag=1
-
-
+autocmd VimEnter *  NERDTree " auto open NERDTree
+autocmd VimEnter *  wincmd l " after NERDTree opened, go back previous window
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "--------------------------------------------------
@@ -812,45 +623,30 @@ let NERDRemoveExtraSpaces=1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:snips_author='Xiao-Ou Zhang'
-let g:snips_email='kepbod@gmail.com'
-let g:snips_github='https://github.com/kepbod'
-
-" Tell Neosnippet about the other snippets
-" let g:neosnippet#snippets_directory="$HOME/.vim/bundle/vim-snippets/snippets"
-let g:neosnippet#enable_snipmate_compatibility=1
-let g:neosnippet#snippets_directory="~/.vim/snippets"
-
-" Plugin key-mappings
-imap <C-K> <Plug>(neosnippet_expand_or_jump)
-smap <C-K> <Plug>(neosnippet_expand_or_jump)
-xmap <C-K> <Plug>(neosnippet_expand_target)
+"--------------------------------------------------
+" => UltiSnips
+"--------------------------------------------------
+let g:UltiSnipsExpandTrigger="<C-J>"
+let g:UltiSnipsJumpForwardTrigger="<C-J>"
+let g:UltiSnipsJumpBackwardTrigger="<C-K>"
+let g:UltiSnipsEditSplit='context'
 
 " SuperTab like snippets behavior
 imap <expr><Tab> pumvisible() ? '<C-N>' : '<Tab>'
 imap <expr><S-Tab> pumvisible() ? '<C-P>' : '<S-Tab>'
 
-" For snippet_complete marker
-if has('conceal')
-    set conceallevel=2 concealcursor=i
-endif
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 "--------------------------------------------------
 " => delimitMate
 "--------------------------------------------------
-
 let delimitMate_expand_cr=1
 let delimitMate_expand_space=1
 let delimitMate_balance_matchpairs=1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 "--------------------------------------------------
 " => Ag(Ack)
 "--------------------------------------------------
-
 if executable('ag')
     nnoremap <Leader>a :Ag<Space>
 elseif executable('ack-grep') || executable('ack')
@@ -861,11 +657,9 @@ if !executable('ag') && has('unix') && executable('ack-grep')
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 "--------------------------------------------------
 " => Syntastic
 "--------------------------------------------------
-
 nnoremap <Leader>s :Errors<CR>
 let g:syntastic_check_on_open=1
 let g:syntastic_auto_jump=1
@@ -881,11 +675,9 @@ let g:syntastic_html_tidy_ignore_errors=[
             \]
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 "--------------------------------------------------
 " => fugitive
 "--------------------------------------------------
-
 if executable('git')
     nnoremap <silent> <leader>gs :Gstatus<CR>
     nnoremap <silent> <leader>gd :Gdiff<CR>
@@ -897,112 +689,27 @@ endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"--------------------------------------------------
-" => Gundo(Undotree)
-"--------------------------------------------------
-
-if has('python')
-    nnoremap <Leader>u :GundoToggle<CR>
-else
-    nnoremap <Leader>u :UndotreeToggle<CR>
-endif
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"--------------------------------------------------
-" => EasyTags
-"--------------------------------------------------
-
-function! InitializeTagDirectory()
-    let parent=$HOME
-    let prefix='.vim'
-    let dirname='tags'
-    let directory=parent.'/'.prefix.'/'.dirname.'/'
-    if !isdirectory(directory)
-        if exists('*mkdir')
-            call mkdir(directory)
-            let g:easytags_by_filetype=directory
-        else
-            echo "Warning: Unable to create directory: ".directory
-            echo "Try: mkdir -p ".directory
-        endif
-    else
-        let g:easytags_by_filetype=directory
-    endif
-endfunction
-call InitializeTagDirectory()
-let g:easytags_python_enabled=1
-let g:easytags_include_members=1
-highlight cMember gui=italic
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"--------------------------------------------------
-" => SingleCompile
-"--------------------------------------------------
-
-nnoremap <Leader>r :SingleCompileRun<CR>
-let g:SingleCompile_showquickfixiferror=1
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"--------------------------------------------------
-" => Emmet
-"--------------------------------------------------
-
-let g:user_emmet_leader_key='<C-Z>'
-let g:user_emmet_settings={'indentation':'    '}
-let g:use_emmet_complete_tag=1
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 "--------------------------------------------------
 " => Splitjoin
 "--------------------------------------------------
-
 let g:splitjoin_split_mapping = ',k'
 let g:splitjoin_join_mapping = ',j'
 let g:splitjoin_normalize_whitespace=1
 let g:splitjoin_align=1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 "--------------------------------------------------
 " => Unite
 "--------------------------------------------------
-
 let g:unite_enable_start_insert=1
 call unite#custom#source('file_rec', 'ignore_pattern', '\.\(pyc\|png\|gif\|jpg\)$')
 nnoremap <Leader>m :Unite<Space>
 nnoremap <C-P> :Unite file_rec:!<CR>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"--------------------------------------------------
-" => vimux
-"--------------------------------------------------
-
-nnoremap <Leader>vp :VimuxPromptCommand<CR>
-vnoremap <Leader>vs "vy :call VimuxRunCommand(@v . "\n", 0)<CR>
-nnoremap <Leader>vx :VimuxClosePanes<CR>
-nnoremap <Leader>vq :VimuxCloseRunner<CR>
-nnoremap <Leader>vi :VimuxInspectRunner<CR>
-nnoremap <Leader>vl :VimuxRunLastCommand<CR>
-nnoremap <Leader>vc :VimuxClearRunnerHistory<CR>
-" Fix bug in ruby 1.9
-if has('ruby')
-    ruby << EOF
-class Object
-def flush; end unless Object.new.respond_to?(:flush)
-end
-EOF
-endif
-
 "--------------------------------------------------
 " => Indent Guides
 "--------------------------------------------------
-
 if !has('gui_running')
     let g:indent_guides_auto_colors=0
     autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=237
@@ -1019,16 +726,5 @@ let g:indent_guides_guide_size=1
 "--------------------------------------------------
 " => startify
 "--------------------------------------------------
-
 let g:startify_list_order = ['files', 'dir', 'bookmarks', 'sessions']
-let g:startify_custom_header = [
-            \'       _       _         ',
-            \'      (_)   __(_)___ ___ ',
-            \'     / / | / / / __ `__ \',
-            \'    / /| |/ / / / / / / /',
-            \'   /_/ |___/_/_/ /_/ /_/ ',
-            \'                         ',
-            \]
-let g:startify_custom_footer = "   This configuration is maintained by Xiao-Ou Zhang(kepbod@gmail.com) and other contributors. Thanks!"
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
