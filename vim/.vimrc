@@ -594,6 +594,7 @@ let g:tagbar_expand=1
 let g:tagbar_foldlevel=2
 let g:tagbar_ironchars=['▾', '▸']
 let g:tagbar_autoshowtag=1
+let g:tagbar_ctags_bin='/usr/local/bin/ctags'  " Proper Ctags locations
 autocmd VimEnter * nested :call tagbar#autoopen(1)
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

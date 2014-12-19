@@ -22,6 +22,7 @@ extend_env "PATH" "$JAVA_HOME/bin" ":"
 extend_env "PATH" "/usr/local/sbin" ":"
 extend_env "PATH" "/usr/local/bin" ":"
 extend_env "PATH" "/usr/local/share/npm/bin" ":"
+PATH=/usr/local/bin:$PATH
 
 SVN_EDITOR=/usr/bin/vi
 export SVN_EDITOR
