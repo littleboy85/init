@@ -1,11 +1,10 @@
-snippet f
+snippet f "anonymous function"
 function($1) {
-    $0
+	${VISUAL}$0
 }
 endsnippet
 
-snippet vf
-var ${1:function_name} = function $1($2) {
-    $0
-};
+snippet def "define an AMD module"
+define([${1:'underscore'}], ${2:callback});
 endsnippet
+

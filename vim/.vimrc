@@ -116,8 +116,8 @@ else
     let airline=1
 endif
 Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'fholgado/minibufexpl.vim'
 " Plugin 'mhinz/vim-startify'
-" Plugin 'fholgado/minibufexpl.vim'
 
 " Navigation
 " Plugin 'Lokaltog/vim-easymotion'
@@ -594,8 +594,6 @@ let g:tagbar_expand=1
 let g:tagbar_foldlevel=2
 let g:tagbar_ironchars=['▾', '▸']
 let g:tagbar_autoshowtag=1
-let g:tagbar_ctags_bin='/usr/local/bin/ctags'  " Proper Ctags locations
-autocmd VimEnter * nested :call tagbar#autoopen(1)
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "--------------------------------------------------
