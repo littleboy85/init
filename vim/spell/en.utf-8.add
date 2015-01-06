@@ -6,6 +6,7 @@ config
 app
 stylesheet
 css
+dev
 checkbox
 json
 webpack
