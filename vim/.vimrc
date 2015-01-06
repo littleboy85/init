@@ -24,6 +24,7 @@ set mousehide " Hide mouse after chars typed
 set mouse=a " Mouse in all modes
 set backup " Set backup
 set undofile " Set undo
+set noswapfile
 " No sound on errors
 set noerrorbells
 set novisualbell
@@ -167,6 +168,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'elzr/vim-json'
 Plugin 'groenewege/vim-less'
 Plugin 'pangloss/vim-javascript'
+Plugin 'vim-scripts/JavaScript-Indent'
 Plugin 'vim-scripts/sql.vim--Stinson'
 Plugin 'django.vim'
 Plugin 'hynek/vim-python-pep8-indent'

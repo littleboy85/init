@@ -8,3 +8,7 @@ stylesheet
 css
 checkbox
 json
+webpack
+firefox
+sourcemap
+beforeEach
