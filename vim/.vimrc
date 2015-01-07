@@ -15,7 +15,6 @@ set autowrite " Write on make/shell commands
 set hidden " Turn on hidden"
 set history=1000 " Increase the lines of history
 set clipboard+=unnamed " Yanks go on clipboard instead
-set spell " Spell checking on
 set modeline " Turn on modeline
 set encoding=utf-8 " Set utf-8 encoding
 set completeopt+=longest " Optimize auto complete
@@ -98,7 +97,7 @@ endif
 filetype off " Required!
 let g:vundle_default_git_proto='git'
 set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+call vundle#begin()
 " Let Vundle manage Vundle
 Plugin 'gmarik/vundle'
 
@@ -168,10 +167,10 @@ Plugin 'scrooloose/syntastic'
 Plugin 'elzr/vim-json'
 Plugin 'groenewege/vim-less'
 Plugin 'pangloss/vim-javascript'
-Plugin 'vim-scripts/JavaScript-Indent'
 Plugin 'vim-scripts/sql.vim--Stinson'
 Plugin 'django.vim'
 Plugin 'hynek/vim-python-pep8-indent'
+Plugin 'vim-scripts/indenthtml.vim'
 " Plugin 'mattn/emmet-vim'
 
 " change root dir by find git
@@ -181,10 +180,19 @@ Plugin 'airblade/vim-rooter'
 if filereadable(expand("$HOME/.vimrc.bundles.local"))
     source $HOME/.vimrc.bundles.local
 endif
-
+call vundle#end()
 filetype plugin indent on " Required!
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" spell check
+set spell
+" Ignore CamelCase and camelCase words when spell checking
+fun! IgnoreCamelCaseSpell()
+  syn match CamelCase /\<[A-Z][a-z]\+[A-Z].\{-}\>/ contains=@NoSpell transparent
+  syn match CamelCase /\<[a-z]\+[A-Z].\{-}\>/ contains=@NoSpell transparent
+  syn cluster Spell add=CamelCase
+endfun
+autocmd BufRead,BufNewFile * :call IgnoreCamelCaseSpell()
 
 "-------------------------------------------------
 " => Vim User Interface
@@ -346,9 +354,9 @@ set shiftwidth=4 " Indent/outdent by four columns
 set shiftround " Indent/outdent to nearest tabstop
 
 " Indent setting for html
-let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
+let g:html_indent_inctags = "body,head,li"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
