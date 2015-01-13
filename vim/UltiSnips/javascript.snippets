@@ -1,4 +1,4 @@
-snippet f "anonymous function"
+snippet f "anonymous function" w
 function($1) {
 	${VISUAL}$0
 }
@@ -8,3 +8,6 @@ snippet def "define an AMD module"
 define([${1:'underscore'}], ${2:callback});
 endsnippet
 
+snippet ; "();" i
+($1);
+endsnippet
