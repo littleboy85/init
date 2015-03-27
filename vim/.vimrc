@@ -107,14 +107,6 @@ Plugin 'chriskempson/vim-tomorrow-theme'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'nanotech/jellybeans.vim'
 
-" UI Additions
-if has("python") || has("python3")
-    Plugin 'Lokaltog/powerline', {'rtp':'/powerline/bindings/vim'}
-    let airline=0
-else
-    Plugin 'bling/vim-airline'
-    let airline=1
-endif
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'fholgado/minibufexpl.vim'
 " Plugin 'mhinz/vim-startify'
@@ -167,6 +159,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'elzr/vim-json'
 Plugin 'groenewege/vim-less'
 Plugin 'pangloss/vim-javascript'
+Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'vim-scripts/sql.vim--Stinson'
 Plugin 'django.vim'
 Plugin 'hynek/vim-python-pep8-indent'
@@ -193,6 +186,7 @@ fun! IgnoreCamelCaseSpell()
   syn cluster Spell add=CamelCase
 endfun
 autocmd BufRead,BufNewFile * :call IgnoreCamelCaseSpell()
+
 
 "-------------------------------------------------
 " => Vim User Interface
@@ -247,10 +241,6 @@ set guitabtooltip=%F
 set laststatus=2 " Show the statusline
 set noshowmode " Hide the default mode text
 " Set the style of the status line
-" Use powerline to modify the statuls line
-if airline==1
-    let g:airline_powerline_fonts=1
-endif
 " Only have cursorline in current window and in normal window
 autocmd WinLeave * set nocursorline
 autocmd WinEnter * set cursorline
@@ -680,11 +670,22 @@ let g:syntastic_html_tidy_ignore_errors=[
             \"plain text isn\'t allowed in ",
             \" lacks \"alt\" attribute",
             \" lacks \"src\" attribute",
+            \" proprietary attribute \"ui-",
             \" proprietary attribute \"ng-",
             \" proprietary attribute \"x-",
             \" proprietary attribute \"role\"",
             \" proprietary attribute \"hidden\""
             \]
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"--------------------------------------------------
+" => javascript-libraries-syntax.vim
+"--------------------------------------------------
+let g:used_javascript_libs = 'jquery,underscore,angularjs'
+autocmd BufReadPre *.js let b:javascript_lib_use_jquery = 1
+autocmd BufReadPre *.js let b:javascript_lib_use_underscore = 1
+autocmd BufReadPre *.js let b:javascript_lib_use_backbone = 1
+autocmd BufReadPre *.js let b:javascript_lib_use_angularjs = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "--------------------------------------------------
