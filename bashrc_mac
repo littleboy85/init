@@ -36,6 +36,6 @@ alias l='ls -CF'
 set -o vi
 export ANT_OPTS="-Xmx1024m -XX:MaxPermSize=256m"
 
-export HOMEBREW_GITHUB_API_TOKEN="32077a7170b06fd8183585ce1fb6e66823983de1"
+export HOMEBREW_GITHUB_API_TOKEN="0196942a9539b5f1c7585fd2e242d7544cc303df"
 source ~/.shortcut.sh
 
