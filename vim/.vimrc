@@ -692,7 +692,7 @@ autocmd BufReadPre *.js let b:javascript_lib_use_angularjs = 1
 " => fugitive
 "--------------------------------------------------
 if executable('git')
-    nnoremap <silent> <leader>gs :Gstatus<CR>
+    nnoremap <silent> <leader>gs :Gstatus<CR>:resize 30<CR>
     nnoremap <silent> <leader>gd :Gdiff<CR>
     nnoremap <silent> <leader>gc :Gcommit -a<CR>
     nnoremap <silent> <leader>gb :Gblame<CR>

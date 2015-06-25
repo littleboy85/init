@@ -29,3 +29,4 @@ mongodb
 localhost
 docstore
 restify
+init
