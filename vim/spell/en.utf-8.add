@@ -25,3 +25,8 @@ routeProvider
 grubstreet
 angularjs
 textstore
+env
+auth
+api
+xml
+refsdecls

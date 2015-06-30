@@ -1,7 +1,10 @@
 {
-	"rulers": [80],
-	"ignored_packages": [],
+	"ignored_packages":
+	[
+	],
+	"rulers":
+	[
+		80
+	],
 	"vintage_start_in_command_mode": true
-	// run this to enable press and hold h/j/k/l to move through file:
-	// defaults write com.sublimetext.3 ApplePressAndHoldEnabled -bool false
 }
