@@ -30,3 +30,7 @@ auth
 api
 xml
 refsdecls
+mongodb
+localhost
+docstore
+restify
