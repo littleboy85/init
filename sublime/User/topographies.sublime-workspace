@@ -3,27 +3,51 @@
 	{
 		"selected_items":
 		[
+			[
+				"ta",
+				"table	Tag"
+			],
+			[
+				"h",
+				"head	Tag"
+			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "/Users/xiz921/project/grubstreet/topographies/scripts/models/rest.js",
+			"contents": "<!DOCTYPE html>\n<html>\n<head>\n	<title></title>\n	<style type=\"text/css\">\n		body {\n			width: 940px;\n			margin: 0 auto;\n			padding: 15px;\n			font-size: 19px;\n		}\n		header {\n			padding: 20px 0;\n		}\n		header .name {\n			padding: 0 0 0 10px;\n			margin: 0;\n			font-size: 28px;\n		}\n		header hr {\n			padding: 0;\n			margin: 0;\n			height: 2px;\n			background-color: #333;\n		}\n		header .contact-info {\n			margin: 0;\n			text-align: right;\n			font-style: italic;\n		}\n		header .contact-info span {\n			display: inline-block;\n			padding: 0 5px;\n			font-size: 18px;\n		}\n		table {\n			width: 100%;\n		}\n		table td {\n			vertical-align: top;\n			padding: 10px 10px;\n		}\n		table tr td:first-child {\n			font-weight: bold;\n			font-size: 22px;\n		}\n		.row>*{\n			display: inline-block;\n			vertical-align: top;\n		}\n		.row>.left {\n			width: 75%;\n		}\n		.row>.right {\n			width: 24%;\n			text-align: right;\n		}\n		td>ul {\n			padding: 0;\n			margin: 0;\n			list-style: none;\n		}\n		li {\n			padding-bottom: 3px;\n		}\n		td>ul>li {\n			padding-bottom: 10px;\n		}\n		li > ul {\n			padding-right: 20px;\n		}\n		.sub-title {\n			font-weight: bold;\n		}\n		.description {\n			font-style: italic;\n		}\n	</style>\n</head>\n<body>\n<header>\n	<h3 class=\"name\">Xiaohan Zhang</h3>\n	<hr/>\n	<div class=\"contact-info\">\n		<span>Address: 1133 Aird Street, Saskatoon, SK, Canada, S7N0T2</span>\n		<span>Phone: (306)251-2248</span>\n		<span>E-mail: xiaohan.zhang.xz@gmail.com</span>\n	</div>\n</header>\n<table>\n	<tr>\n		<td>Education</td>\n		<td class=\"row\">\n			<div class=\"left\">\n				<div>\n					<span class=\"sub-title\">\n						University of Saskatchewan</span>,\n					<span>Saskatoon, SK, Canada</span>\n				</div>\n\n				<div>B.Sc. Honors - College of Computer Science</div>\n			</div>\n			<div class=\"right\">\n				May, 2011\n			</div>\n		</td>\n	</tr>\n	<tr>\n		<td>Professional Experience</td>\n		<td>\n			<ul>	\n				<li>\n					<div class=\"row\">\n						<div class=\"left \">\n							<span class=\"sub-title\">Point 2 Technologies</span>,\n							<span>Saskatoon, SK, Canada</span>\n						</div>\n						<div class=\"right\">May, 2009 - Sep, 2010</div>\n					</div>\n					<div class=\"description\">Software Developer</div>\n					<ul>\n						<li>\n							<div>\n								Build Syndication System that help real-estate agent syndicate their listings from different partners.\n							</div> \n							<div>\n								(java, scala, xml, SQL Server)	\n							</div>\n						</li>\n						<li>\n							<div>\n								Develop convenient web tools for real-estate agents build their websites.\n							</div> \n							<div>\n								(asp.net, python, javascript, css, html)\n							</div>\n						</li>\n					</ul>\n				</li>\n				<li>\n					<div class=\"row\">\n						<div class=\"left\">\n							<span class=\"sub-title\">\n								University of Saskatchewan</span>,\n							<span>Saskatoon, SK, Canada</span>\n						</div>\n						<div class=\"right\">Sep, 2011 - present</div>\n					</div>\n					<div class=\"description\">Research Support Programmer</div>\n					<ul>\n						<li>\n							<div>\n								Textual Communities Project, develop new data model for scholars that help them annotate, transcribe, analyze manuscripts, books and other documents.\n							</div> \n							<div>\n								(javascript, backbone, css, html, python, django, celery, mysql, rabbitmq, mongodb)\n							</div>\n						</li>\n						<li>\n							<div>\n								Grubstreet Project, build a website that let user edit / view a a digital edition of eighteenth-century London. Create a interactable map base on print culture, literature and trades.						\n							</div>\n							<div>\n								(javascript, raphael, css, html, php, python,  mysql)\n							</div>\n						</li>\n					</ul>\n				</li>\n		</td>\n	</tr>\n	<tr>\n		<td>Skills</td>\n		<td>\n			<ul>\n				<li>\n					<div class=\"sub-title\">\n						Web Development\n					</div>\n					<ul>\n						<li>Expert knowledge of HTML, CSS, JavaScript</li>\n						<li>Experience with front-end framewords such as jQuery, Backbone, Angular, D3, LESS, Bootstrap</li>\n						<li>Experience with back-end framewords such as Django, Flask, Express, rails, nodejs</li>\n						<li>Experience with apache and tomcat</li>\n						<li>Experience with requireJS, webpack, browserify</li>\n						<li>Knowledge of responsive web design</li>\n						<li>Knowledge of CommonJS, AMD</li>\n						<li>Knowledge of REST / RPC api design</li>\n					</ul>\n				</li>\n				<li>\n					<div class=\"sub-title\">\n						Database\n					</div>\n					<ul>\n						<li>Experience with MySQL, PostgreSQL, SQLServer, Mongodb</li>\n						<li>Familiar SQL profiler and query optimization.</li>\n						<li>Familiar with data security, backup and recovery</li>\n					</ul>\n				</li>\n				<li>\n					<div class=\"sub-title\">\n						General Skills\n					</div>\n					<ul>\n						<li>Knowledge of variety programming languages. \n						(e.g. C/C++, python, Java, PHP, ruby, scala, prolog, haskell, matlab, R, JavaScript)</li>\n						<li>Experience with many scripting languages/tools. \n						(e.g. bash, batch, Makefile, ant, grunt) </li>\n						<li>Familiar with SVN, Git.</li>\n						<li>Familiar with TDD and Agile methodologies.</li>\n						<li>Knowledge of common design patterns</li>\n						<li>Strong trouble-shooting and debug skills</li> \n					</ul>				\n				</li>\n			</ul>\n				\n		</td>\n	</tr>\n</table>\n</body>\n</html>\n\n",
+			"file": "/Users/xzhang/project/resume/resume.html",
+			"file_size": 5179,
+			"file_write_time": 130760843860000000,
 			"settings":
 			{
-				"buffer_size": 1173,
+				"buffer_size": 5179,
 				"line_ending": "Unix"
 			}
 		}
 	],
 	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
 	"command_palette":
 	{
-		"height": 392.0,
+		"height": 227.0,
+		"last_filter": ":w",
 		"selected_items":
 		[
 			[
+				":w",
+				":w - Save"
+			],
+			[
 				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"Pack",
 				"Package Control: Install Package"
 			],
 			[
@@ -39,7 +63,7 @@
 				"Set Syntax: Python"
 			]
 		],
-		"width": 467.0
+		"width": 544.0
 	},
 	"console":
 	{
@@ -58,12 +82,34 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
+	"expanded_folders":
+	[
+		"/Users/xiz921/project/grubstreet/topographies"
+	],
 	"file_history":
 	[
-		"/Users/xiz921/Library/Application Support/Sublime Text 3/Packages/Default/Default (OSX).sublime-keymap",
+		"/Users/xzhang/project/grubstreet/topographies/scripts/utils/schema.js",
+		"/Users/xzhang/project/grubstreet/topographies/scripts/models/rest.js",
+		"/Users/xzhang/project/grubstreet/topographies/scripts/config.js",
+		"/Users/xzhang/project/grubstreet/topographies/scripts/test.js",
+		"/Users/xzhang/Library/Application Support/Sublime Text 3/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/xzhang/project/grubstreet/topographies/scripts/auth.js",
+		"/Users/xzhang/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/xzhang/project/grubstreet/topographies/scripts/data/schema.js",
+		"/Users/xzhang/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/Users/xzhang/project/grubstreet/topographies/test.html",
+		"/Users/xzhang/project/grubstreet/topographies/lib/requirejs/tests/text/textOnError.html",
+		"/Users/xzhang/project/grubstreet/topographies/lib/seadragon-ajax-0.8.9/doc/Seadragon.Config.html",
+		"/Users/xzhang/project/grubstreet/topographies/css/sidebar.less",
+		"/Users/xzhang/Library/Application Support/Sublime Text 3/Packages/User/SublimeCodeIntel.sublime-settings",
+		"/Users/xzhang/Library/Application Support/Sublime Text 3/Packages/Default/Default (OSX).sublime-keymap",
+		"/Users/xzhang/Library/Application Support/Sublime Text 3/Packages/User/Package Control.sublime-settings",
+		"/Users/xzhang/project/grubstreet/topographies/lib/backbone-amd/package.json",
+		"/Users/xzhang/project/grubstreet/topographies/lib/requirejs/tests/pathArray/pathArray.html",
+		"/Users/xzhang/project/grubstreet/topographies/lib/requirejs/tests/packages/funky/index.js",
+		"/Users/xzhang/project/grubstreet/topographies/lib/requirejs/tests/packages/optimizing/packages/engine/pistons.js",
+		"/Users/xzhang/project/grubstreet/topographies/lib/requirejs/tests/packages/optimizing/packages/tires/main.js",
 		"/Users/xiz921/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
-		"/Users/xiz921/Library/Application Support/Sublime Text 3/Packages/User/Default (OSX).sublime-keymap",
-		"/Users/xiz921/Library/Application Support/Sublime Text 3/Packages/User/topographies.sublime-project",
 		"/Users/xiz921/project/grubstreet/topographies/css/sidebar.less",
 		"/Users/xiz921/project/grubstreet/topographies/lib/seadragon-ajax-0.8.9/doc/Seadragon.EventManager.html",
 		"/Users/xiz921/project/grubstreet/topographies/lib/seadragon-ajax-0.8.9/doc/Seadragon.TileSource.html",
@@ -98,15 +144,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"reindent",
-			"auto_indent",
-			"view",
-			"tab",
-			"`",
-			"ctrl+`",
-			"+[\"",
-			"+{\"",
-			"super+{",
+			"ul",
+			"wrap",
 			"ignored_pa",
 			"meta",
 			"ru",
@@ -135,23 +174,24 @@
 			[
 				{
 					"buffer": 0,
-					"file": "/Users/xiz921/project/grubstreet/topographies/scripts/models/rest.js",
+					"file": "/Users/xzhang/project/resume/resume.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1173,
+						"buffer_size": 5179,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								523,
-								523
+								2219,
+								2219
 							]
 						],
 						"settings":
 						{
+							"auto_complete": false,
 							"codeintel": true,
 							"codeintel_config":
 							{
@@ -256,12 +296,10 @@
 							},
 							"codeintel_tooltips": "popup",
 							"sublime_auto_complete": true,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/HTML/HTML.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1524.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -276,7 +314,7 @@
 	},
 	"input":
 	{
-		"height": 0.0
+		"height": 31.0
 	},
 	"layout":
 	{
@@ -305,6 +343,7 @@
 	{
 		"height": 0.0
 	},
+	"pinned_build_system": "",
 	"project": "topographies.sublime-project",
 	"replace":
 	{
@@ -314,15 +353,24 @@
 	"select_file":
 	{
 		"height": 0.0,
+		"last_filter": "",
 		"selected_items":
 		[
 			[
-				"res",
-				"scripts/models/rest.js"
+				"te",
+				"scripts/test.js"
 			],
 			[
 				"test.js",
-				"topographies/scripts/test.js"
+				"scripts/test.js"
+			],
+			[
+				"sche",
+				"scripts/utils/schema.js"
+			],
+			[
+				"res",
+				"scripts/models/rest.js"
 			]
 		],
 		"width": 0.0
@@ -330,6 +378,7 @@
 	"select_project":
 	{
 		"height": 0.0,
+		"last_filter": "",
 		"selected_items":
 		[
 		],
@@ -338,11 +387,13 @@
 	"select_symbol":
 	{
 		"height": 0.0,
+		"last_filter": "",
 		"selected_items":
 		[
 		],
 		"width": 0.0
 	},
+	"selected_group": 0,
 	"settings":
 	{
 	},
