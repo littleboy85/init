@@ -164,6 +164,7 @@ Plugin 'vim-scripts/sql.vim--Stinson'
 Plugin 'django.vim'
 Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'vim-scripts/indenthtml.vim'
+Plugin 'mxw/vim-jsx'
 " Plugin 'mattn/emmet-vim'
 
 " change root dir by find git
@@ -664,7 +665,8 @@ let g:syntastic_check_on_open=1
 let g:syntastic_auto_jump=1
 let g:syntastic_stl_format='[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 let g:syntastic_enable_highlighting=0
-let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_javascript_checkers = ['jsxhint']
+let g:syntastic_javascript_jsxhint_exec = ['jsx-jshint-wrapper']
 let g:syntastic_less_checkers = [''] 
 let g:syntastic_html_tidy_ignore_errors=[
             \"trimming empty",
