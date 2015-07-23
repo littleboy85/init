@@ -12,7 +12,18 @@ snippet ; "();" i
 ($1);
 endsnippet
 
-snippet re
-var $1 = require('$1');
+snippet vr
+var $1 = require('$1');$0
+endsnippet
 
+snippet re
+require('$1');$0
+endsnippet
+
+snippet <
+<$1>$0</$1>
+endsnippet
+
+snippet /
+<$1/>
 endsnippet
