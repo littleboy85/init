@@ -668,17 +668,8 @@ let g:syntastic_enable_highlighting=0
 let g:syntastic_javascript_checkers = ['jsxhint']
 let g:syntastic_javascript_jsxhint_exec = 'jsx-jshint-wrapper'
 let g:syntastic_less_checkers = [''] 
-let g:syntastic_html_tidy_ignore_errors=[
-            \"trimming empty",
-            \"plain text isn\'t allowed in ",
-            \" lacks \"alt\" attribute",
-            \" lacks \"src\" attribute",
-            \" proprietary attribute \"ui-",
-            \" proprietary attribute \"ng-",
-            \" proprietary attribute \"x-",
-            \" proprietary attribute \"role\"",
-            \" proprietary attribute \"hidden\""
-            \]
+" brew install tidy-html5
+let g:syntastic_html_tidy_exec='tidy'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "--------------------------------------------------
