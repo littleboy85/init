@@ -182,9 +182,12 @@ filetype plugin indent on " Required!
 set spell
 " Ignore CamelCase and camelCase words when spell checking
 fun! IgnoreCamelCaseSpell()
-  syn match CamelCase /\<[A-Z][a-z]\+[A-Z].\{-}\>/ contains=@NoSpell transparent
-  syn match CamelCase /\<[a-z]\+[A-Z].\{-}\>/ contains=@NoSpell transparent
-  syn cluster Spell add=CamelCase
+  syn match CamelCase1 /\<[A-Z][a-z]\+[A-Z].\{-}\>/ contains=@NoSpell transparent
+  syn match CamelCase2 /\<[a-z]\+[A-Z0-9].\{-}\>/ contains=@NoSpell transparent
+  syn match ShortWord /\<[a-z]\{1,3}\>/ contains=@NoSpell transparent
+  syn cluster Spell add=CamelCase1
+  syn cluster Spell add=CamelCase2
+  syn cluster Spell add=ShortWord
 endfun
 autocmd BufRead,BufNewFile * :call IgnoreCamelCaseSpell()
 
