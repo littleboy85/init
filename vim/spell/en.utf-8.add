@@ -32,3 +32,9 @@ addons
 lodash
 ctrl
 params
+mousedown
+mousemove
+mouseup
+JSONPath
+teis
+DOMContentLoaded
