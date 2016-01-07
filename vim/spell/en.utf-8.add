@@ -29,7 +29,9 @@ eval
 defs
 linechart
 addons
+TCService
 lodash
+DOMContentLoaded
 ctrl
 params
 mousedown
