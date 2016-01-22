@@ -673,6 +673,14 @@ let g:syntastic_javascript_jsxhint_exec = 'jsx-jshint-wrapper'
 let g:syntastic_less_checkers = [''] 
 " brew install tidy-html5
 let g:syntastic_html_tidy_exec = 'tidy'
+let g:syntastic_html_tidy_quiet_messages={
+            \ 'regex': [
+            \   'discarding unexpected <.*-',
+            \   '> is not recognized',
+            \   'trimming empty <',
+            \   'attribute name']
+            \}
+"let g:syntastic_html_tidy_ignore_errors=[]
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "--------------------------------------------------
