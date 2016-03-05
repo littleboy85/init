@@ -1,3 +1,29 @@
---follow
---smart-case
+#--sort−files
+# Always color, even if piping to a another program
+--color
+
+# Use "less −r" as my pager
+# --pager
+# less -r
+
+# make sure ack knows how to search common filetypes used in rails projects
+--type-add=css=scss
+--type-add=ruby=.haml,.rselm,.feature,.ru,.lock
+--type-set=coffeescript=.coffee
+--type-set=coffee=.coffee
+
+# django
 --ignore-dir=venv
+
+#make sure ack knows how to search common filetypes used in node.js projects
+--ignore-dir=node_modules
+--ignore-dir=bower_components
+--type-set=coffee=.coffee
+--type-set=jade=.jade
+--type-set=feature=.feature
+--type-set=json=.json
+
+# --follow
+--smart-case
+
+

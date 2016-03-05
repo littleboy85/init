@@ -130,6 +130,7 @@ endif
 Plugin 'Shougo/unite.vim'
 
 Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 " Plugin 'jistr/vim-nerdtree-tabs'
 
 if executable('ag')
@@ -147,7 +148,6 @@ Plugin 'AndrewRadev/splitjoin.vim'
 
 " Automatic Helper
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'marijnh/tern_for_vim' " auto complete js support
 Plugin 'Raimondi/delimitMate' " auto close quotes, parenthesise, brackets, etc.
 Plugin 'SirVer/ultisnips' " snip
 Plugin 'honza/vim-snippets'
@@ -158,14 +158,17 @@ Plugin 'scrooloose/syntastic'
 " Language related
 Plugin 'elzr/vim-json'
 Plugin 'groenewege/vim-less'
-Plugin 'pangloss/vim-javascript'
-Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'vim-scripts/sql.vim--Stinson'
 Plugin 'django.vim'
 Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'vim-scripts/indenthtml.vim'
-Plugin 'mxw/vim-jsx'
-" Plugin 'mattn/emmet-vim'
+
+Plugin 'leafgarland/typescript-vim'
+
+" javascript
+Plugin 'ternjs/tern_for_vim' " auto complete js support
+Plugin 'pangloss/vim-javascript'
+Plugin 'othree/javascript-libraries-syntax.vim'
 
 " change root dir by find git
 Plugin 'airblade/vim-rooter'
@@ -617,6 +620,21 @@ autocmd VimEnter *  wincmd l " after NERDTree opened, go back previous window
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "--------------------------------------------------
+" => nerdtree-git-plugin
+"--------------------------------------------------
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ "Unknown"   : "?"
+    \ }
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"--------------------------------------------------
 " => NERD_commenter
 "--------------------------------------------------
 
@@ -664,10 +682,17 @@ endif
 " => Syntastic
 "--------------------------------------------------
 nnoremap <Leader>s :Errors<CR>
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 let g:syntastic_auto_jump = 1
-let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
-let g:syntastic_enable_highlighting = 0
+
+" let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
+" let g:syntastic_enable_highlighting = 0
 let g:syntastic_javascript_checkers = ['jsxhint']
 let g:syntastic_javascript_jsxhint_exec = 'jsx-jshint-wrapper'
 let g:syntastic_less_checkers = [''] 
@@ -686,11 +711,12 @@ let g:syntastic_html_tidy_quiet_messages={
 "--------------------------------------------------
 " => javascript-libraries-syntax.vim
 "--------------------------------------------------
-let g:used_javascript_libs = 'jquery,underscore,angularjs'
+let g:used_javascript_libs = 'jquery,underscore,angularjs,react,jasmine'
 autocmd BufReadPre *.js let b:javascript_lib_use_jquery = 1
 autocmd BufReadPre *.js let b:javascript_lib_use_underscore = 1
-autocmd BufReadPre *.js let b:javascript_lib_use_backbone = 1
 autocmd BufReadPre *.js let b:javascript_lib_use_angularjs = 1
+autocmd BufReadPre *.js let b:javascript_lib_use_react = 1
+autocmd BufReadPre *.js let b:javascript_lib_use_jasmine = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "--------------------------------------------------
