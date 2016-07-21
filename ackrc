@@ -18,6 +18,7 @@
 #make sure ack knows how to search common filetypes used in node.js projects
 --ignore-dir=node_modules
 --ignore-dir=bower_components
+--ignore-dir=dist
 --type-set=coffee=.coffee
 --type-set=jade=.jade
 --type-set=feature=.feature

@@ -24,6 +24,8 @@ extend_env "PATH" "/usr/local/bin" ":"
 extend_env "PATH" "/usr/local/share/npm/bin" ":"
 PATH=/usr/local/bin:$PATH
 
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+
 SVN_EDITOR=/usr/bin/vi
 export SVN_EDITOR
 
@@ -36,6 +38,9 @@ alias l='ls -CF'
 set -o vi
 export ANT_OPTS="-Xmx1024m -XX:MaxPermSize=256m"
 
-export HOMEBREW_GITHUB_API_TOKEN="0196942a9539b5f1c7585fd2e242d7544cc303df"
+export HOMEBREW_GITHUB_API_TOKEN="01a9b0c16ce9f5b6454ab8353e4c7562642e6c2c"
+
+export NVM_DIR="$HOME/.nvm"
+. "$(brew --prefix nvm)/nvm.sh"
 source ~/.shortcut.sh
 

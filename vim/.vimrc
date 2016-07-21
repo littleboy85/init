@@ -166,9 +166,10 @@ Plugin 'vim-scripts/indenthtml.vim'
 Plugin 'leafgarland/typescript-vim'
 
 " javascript
-Plugin 'ternjs/tern_for_vim' " auto complete js support
+" Plugin 'ternjs/tern_for_vim' " auto complete js support
 Plugin 'pangloss/vim-javascript'
 Plugin 'othree/javascript-libraries-syntax.vim'
+Plugin 'othree/yajs.vim'
 
 " change root dir by find git
 Plugin 'airblade/vim-rooter'
@@ -748,8 +749,19 @@ let g:splitjoin_align=1
 "--------------------------------------------------
 let g:unite_enable_start_insert=1
 call unite#custom#source('file_rec', 'ignore_pattern', '\.\(pyc\|png\|gif\|jpg\)$')
-nnoremap <Leader>m :Unite<Space>
+nnoremap <Leader>u :Unite<Space>
 nnoremap <C-P> :Unite file_rec:!<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"--------------------------------------------------
+" => tern_for_vim
+"--------------------------------------------------
+nnoremap <Leader>td :TernDoc<CR>
+nnoremap <Leader>td :TernDef<CR>
+nnoremap <Leader>tpd :TernDefPreview<CR>
+nnoremap <Leader>tsd :TernDefSplit<CR>
+nnoremap <Leader>tt :TernType<CR>
+nnoremap <Leader>tr :TernRefs<CR>
 
 "--------------------------------------------------
 " => Indent Guides
