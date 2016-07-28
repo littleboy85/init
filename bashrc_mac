@@ -38,7 +38,7 @@ alias l='ls -CF'
 set -o vi
 export ANT_OPTS="-Xmx1024m -XX:MaxPermSize=256m"
 
-export HOMEBREW_GITHUB_API_TOKEN="01a9b0c16ce9f5b6454ab8353e4c7562642e6c2c"
+export HOMEBREW_GITHUB_API_TOKEN="c2675a02b566bac96cceefeb43b0df302eb9ec85"
 
 export NVM_DIR="$HOME/.nvm"
 . "$(brew --prefix nvm)/nvm.sh"
