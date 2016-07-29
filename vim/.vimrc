@@ -29,6 +29,9 @@ set noerrorbells
 set novisualbell
 set t_vb=
 
+vnoremap <C-C> "+y
+map <S-V> "+gP
+
 " Set directories
 function! InitializeDirectories()
     let parent=$HOME
@@ -127,7 +130,9 @@ Plugin 'bkad/CamelCaseMotion'
 if executable('ctags')
     Plugin 'majutsushi/tagbar'
 endif
-Plugin 'Shougo/unite.vim'
+
+"Plugin 'Shougo/unite.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
@@ -168,8 +173,9 @@ Plugin 'leafgarland/typescript-vim'
 " javascript
 " Plugin 'ternjs/tern_for_vim' " auto complete js support
 Plugin 'pangloss/vim-javascript'
-Plugin 'othree/javascript-libraries-syntax.vim'
-Plugin 'othree/yajs.vim'
+Plugin 'mxw/vim-jsx'
+"Plugin 'othree/javascript-libraries-syntax.vim'
+"Plugin 'othree/yajs.vim'
 
 " change root dir by find git
 Plugin 'airblade/vim-rooter'
@@ -502,6 +508,8 @@ augroup ft_php
         autocmd!
         autocmd filetype php call AddPHPFuncList()
     endif
+
+    autocmd Filetype php setlocal noexpandtab tabstop=4 shiftwidth=4
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -616,7 +624,7 @@ let NERDTreeShowLineNumbers=1
 let NERDTreeDirArrows=1
 let g:nerdtree_tabs_open_on_gui_startup=0
 let NERDTreeIgnore = ['\.pyc$']
-autocmd VimEnter *  NERDTree " auto open NERDTree
+" autocmd VimEnter *  NERDTree " auto open NERDTree
 autocmd VimEnter *  wincmd l " after NERDTree opened, go back previous window
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -671,6 +679,7 @@ let delimitMate_balance_matchpairs=1
 "--------------------------------------------------
 if executable('ag')
     nnoremap <Leader>a :Ag<Space>
+    nnoremap <Leader>aa :Ag "\b<C-R><C-W>\b"<CR>:cw<CR>
 elseif executable('ack-grep') || executable('ack')
     nnoremap <Leader>a :Ack!<Space>
 endif
@@ -718,6 +727,11 @@ autocmd BufReadPre *.js let b:javascript_lib_use_underscore = 1
 autocmd BufReadPre *.js let b:javascript_lib_use_angularjs = 1
 autocmd BufReadPre *.js let b:javascript_lib_use_react = 1
 autocmd BufReadPre *.js let b:javascript_lib_use_jasmine = 1
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"--------------------------------------------------
+" => mxw/vim-jsx
+"--------------------------------------------------
+let g:jsx_ext_required = 0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "--------------------------------------------------
@@ -747,10 +761,19 @@ let g:splitjoin_align=1
 "--------------------------------------------------
 " => Unite
 "--------------------------------------------------
-let g:unite_enable_start_insert=1
-call unite#custom#source('file_rec', 'ignore_pattern', '\.\(pyc\|png\|gif\|jpg\)$')
-nnoremap <Leader>u :Unite<Space>
-nnoremap <C-P> :Unite file_rec:!<CR>
+" let g:unite_enable_start_insert=1
+" call unite#custom#source('file_rec', 'ignore_pattern', '\.\(pyc\|png\|gif\|jpg\)$')
+" nnoremap <Leader>u :Unite<Space>
+" nnoremap <C-P> :Unite file_rec:!<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"--------------------------------------------------
+" => Unite
+"--------------------------------------------------
+let g:ctrlp_max_files=0
+let g:ctrlp_max_depth=10
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "--------------------------------------------------
