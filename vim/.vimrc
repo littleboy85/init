@@ -29,8 +29,11 @@ set noerrorbells
 set novisualbell
 set t_vb=
 
-vnoremap <C-C> "+y
-map <S-V> "+gP
+if !has('gui_macvim')
+    vnoremap ã "+y
+    vmap ö c<ESC>"+p
+    imap ö <C-r><C-o>+
+endif
 
 " Set directories
 function! InitializeDirectories()
@@ -260,6 +263,8 @@ autocmd WinLeave * set nocursorline
 autocmd WinEnter * set cursorline
 auto InsertEnter * set nocursorline
 auto InsertLeave * set cursorline
+
+
 set wildmenu " Show list instead of just completing
 set wildmode=list:longest,full " Use powerful wildmenu
 set shortmess=at " Avoids 'hit enter'
@@ -309,6 +314,7 @@ augroup END
 
 " Set gVim UI setting
 if has('gui_running')
+    set guioptions+=Ace
     set guioptions-=m
     set guioptions-=T
 endif
@@ -321,7 +327,7 @@ endif
 
 syntax on " Enable syntax
 set background=dark " Set background
-if !has('gui_running')
+if !has('gui_running') || $COLORTERM == 'gnome-terminal'
     set t_Co=256 " Use 256 colors
 endif
 colorscheme hybrid " Load a colorscheme
@@ -329,7 +335,7 @@ colorscheme hybrid " Load a colorscheme
 nnoremap <silent>\t :colorscheme Tomorrow-Night-Eighties<CR>
 nnoremap <silent>\j :colorscheme jellybeans<CR>
 nnoremap <silent>\h :colorscheme hybrid<CR>
-if has('gui_running')
+if has('gui_running') || $COLORTERM == 'gnome-terminal'
     nnoremap <silent>\t :colorscheme Tomorrow-Night<CR>
     nnoremap <silent>\s :colorscheme solarized<CR>
 endif
