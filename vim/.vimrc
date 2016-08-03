@@ -125,7 +125,6 @@ Plugin 'fholgado/minibufexpl.vim'
 " Navigation
 " Plugin 'Lokaltog/vim-easymotion'
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'bkad/CamelCaseMotion'
 " Plugin 'michaeljsmith/vim-indent-object'
 " Plugin 'coderifous/textobj-word-column.vim'
 " Plugin 'tpope/vim-unimpaired'
@@ -164,6 +163,7 @@ Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-surround'
 Plugin 'Raimondi/delimitMate' " auto close quotes, parenthesise, brackets, etc.
+Plugin 'tpope/vim-repeat'
 Plugin 'SirVer/ultisnips' " snip
 Plugin 'honza/vim-snippets'
 
