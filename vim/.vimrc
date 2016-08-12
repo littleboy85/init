@@ -29,8 +29,11 @@ set noerrorbells
 set novisualbell
 set t_vb=
 
-vnoremap <C-C> "+y
-map <S-V> "+gP
+if !has('gui_macvim')
+    vnoremap ã "+y
+    vmap ö c<ESC>"+p
+    imap ö <C-r><C-o>+
+endif
 
 " Set directories
 function! InitializeDirectories()
@@ -104,20 +107,24 @@ call vundle#begin()
 " Let Vundle manage Vundle
 Plugin 'gmarik/vundle'
 
+" ui
+Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
 " colour scheme
 Plugin 'w0ng/vim-hybrid' 
-Plugin 'chriskempson/vim-tomorrow-theme'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'nanotech/jellybeans.vim'
+" Plugin 'chriskempson/vim-tomorrow-theme'
+" Plugin 'altercation/vim-colors-solarized'
+" Plugin 'nanotech/jellybeans.vim'
 
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'fholgado/minibufexpl.vim'
 " Plugin 'mhinz/vim-startify'
 
+
 " Navigation
 " Plugin 'Lokaltog/vim-easymotion'
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'bkad/CamelCaseMotion'
 " Plugin 'michaeljsmith/vim-indent-object'
 " Plugin 'coderifous/textobj-word-column.vim'
 " Plugin 'tpope/vim-unimpaired'
@@ -135,7 +142,6 @@ endif
 Plugin 'ctrlpvim/ctrlp.vim'
 
 Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
 " Plugin 'jistr/vim-nerdtree-tabs'
 
 if executable('ag')
@@ -144,7 +150,9 @@ elseif executable('ack-grep') || executable('ack')
     Plugin 'mileszs/ack.vim'
 endif
 if executable('git')
+    Plugin 'Xuyuanp/nerdtree-git-plugin'
     Plugin 'tpope/vim-fugitive'
+    Plugin 'airblade/vim-gitgutter.git'
 endif
 
 " Short Cuts 
@@ -153,7 +161,9 @@ Plugin 'AndrewRadev/splitjoin.vim'
 
 " Automatic Helper
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'tpope/vim-surround'
 Plugin 'Raimondi/delimitMate' " auto close quotes, parenthesise, brackets, etc.
+Plugin 'tpope/vim-repeat'
 Plugin 'SirVer/ultisnips' " snip
 Plugin 'honza/vim-snippets'
 
@@ -176,6 +186,9 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 "Plugin 'othree/javascript-libraries-syntax.vim'
 "Plugin 'othree/yajs.vim'
+
+" html
+Plugin 'mattn/emmet-vim'
 
 " change root dir by find git
 Plugin 'airblade/vim-rooter'
@@ -260,6 +273,8 @@ autocmd WinLeave * set nocursorline
 autocmd WinEnter * set cursorline
 auto InsertEnter * set nocursorline
 auto InsertLeave * set cursorline
+
+
 set wildmenu " Show list instead of just completing
 set wildmode=list:longest,full " Use powerful wildmenu
 set shortmess=at " Avoids 'hit enter'
@@ -272,7 +287,7 @@ set scrolljump=5 " Lines to scroll when cursor leaves screen
 set scrolloff=3 " Minimum lines to keep above and below cursor
 set sidescroll=1 " Minimal number of columns to scroll horizontally
 set sidescrolloff=10 " Minimal number of screen columns to keep away from cursor
-set columns=118
+set columns=88
 
 set showmatch " Show matching brackets/parenthesis
 set matchtime=2 " Decrease the time to blink
@@ -280,7 +295,8 @@ set matchtime=2 " Decrease the time to blink
 nmap <Tab> %
 vmap <Tab> %
 
-set number " Show line numbers
+"set number " Show line numbers
+set relativenumber
 " Toggle relativenumber
 function! ToggleRelativenumber()
     if &number==1
@@ -309,6 +325,10 @@ augroup END
 
 " Set gVim UI setting
 if has('gui_running')
+    set guioptions-=L
+    set guioptions-=l
+    set guioptions-=R
+    set guioptions-=r
     set guioptions-=m
     set guioptions-=T
 endif
@@ -321,18 +341,10 @@ endif
 
 syntax on " Enable syntax
 set background=dark " Set background
-if !has('gui_running')
+if !has('gui_running') || $COLORTERM == 'gnome-terminal'
     set t_Co=256 " Use 256 colors
 endif
 colorscheme hybrid " Load a colorscheme
-
-nnoremap <silent>\t :colorscheme Tomorrow-Night-Eighties<CR>
-nnoremap <silent>\j :colorscheme jellybeans<CR>
-nnoremap <silent>\h :colorscheme hybrid<CR>
-if has('gui_running')
-    nnoremap <silent>\t :colorscheme Tomorrow-Night<CR>
-    nnoremap <silent>\s :colorscheme solarized<CR>
-endif
 
 if has('gui_running')
     if has('gui_gtk')
@@ -551,34 +563,6 @@ xnoremap & :&&<CR>
 " Keep the cursor in place while joining lines
 nnoremap J mzJ`z
 
-" Select entire buffer
-nnoremap vaa ggvGg_
-nnoremap Vaa ggVG
-
-" Map \<Space> to commenting
-function! IsWhiteLine()
-    if (getline(".")=~"^$")
-        let oldlinenumber=line(".")
-        :call NERDComment('n', 'Sexy')
-        if (line(".")==oldlinenumber)
-            :call NERDComment('n', 'Append')
-        else
-            normal! k
-            startinsert!
-        endif
-    else
-        normal! A 
-        :call NERDComment('n', 'Append')
-    endif
-endfunction
-nnoremap <silent>\<Space> :call IsWhiteLine()<CR>
-
-" Strip all trailing whitespace in the current file
-nnoremap <Leader>q :%s/\s\+$//<CR>:let @/=''<CR>
-
-" Modify all the indents
-nnoremap \= gg=G
-
 " See the differences between the current buffer and the file it was loaded from
 command! DiffOrig vert new | set bt=nofile | r ++edit # | 0d_
             \ | diffthis | wincmd p | diffthis
@@ -601,6 +585,28 @@ if has('gui_running')
     endif
 endif
 
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"-------------------------------------------------
+" => vim-airline
+"-------------------------------------------------
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#buffer_idx_mode = 1
+let g:airline#extensions#default#section_truncate_width = {
+      \ 'a': 100,
+      \ 'gutter': 100,
+      \ 'x': 100,
+      \ 'y': 100,
+      \ }
+" let g:airline_section_a = ''
+" let g:airline_section_b = ''
+" let g:airline_section_gutter = ''
+" let g:airline_section_x = ''
+" let g:airline_section_y = ''
+let g:airline_skip_empty_sections = 1
+let g:airline#extensions#whitespace#enabled = 0
+
 "--------------------------------------------------
 " => Tagbar
 "--------------------------------------------------
@@ -615,8 +621,21 @@ let g:tagbar_autoshowtag=1
 "--------------------------------------------------
 " => NERD_tree
 "--------------------------------------------------
+function! MyNERDTreeToggle()
+    let size = g:NERDTreeWinSize + 1
+    if g:NERDTree.IsOpen()
+        NERDTreeToggle
+        exec("set columns-=" . size)
+    else
+        NERDTreeFind
+        exec("set columns+=" . size)
+    endif
+    wincmd p
+endfunction
+
 nnoremap <Leader>d :NERDTreeToggle<CR>
-nnoremap <Leader>f :NERDTreeFind<CR>
+nnoremap <Leader>f :call MyNERDTreeToggle()<CR>
+
 let NERDTreeChDirMode=2
 let NERDTreeShowBookmarks=1
 let NERDTreeShowHidden=0
@@ -625,7 +644,7 @@ let NERDTreeDirArrows=1
 let g:nerdtree_tabs_open_on_gui_startup=0
 let NERDTreeIgnore = ['\.pyc$']
 " autocmd VimEnter *  NERDTree " auto open NERDTree
-autocmd VimEnter *  wincmd l " after NERDTree opened, go back previous window
+" autocmd VimEnter *  wincmd p " after NERDTree opened, go back previous window
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "--------------------------------------------------
@@ -692,9 +711,9 @@ endif
 " => Syntastic
 "--------------------------------------------------
 nnoremap <Leader>s :Errors<CR>
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" set statusline=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -703,8 +722,8 @@ let g:syntastic_auto_jump = 1
 
 " let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 " let g:syntastic_enable_highlighting = 0
-let g:syntastic_javascript_checkers = ['jsxhint']
-let g:syntastic_javascript_jsxhint_exec = 'jsx-jshint-wrapper'
+let g:syntastic_javascript_checkers = ['eslint']
+" let g:syntastic_javascript_jsxhint_exec = 'jsx-jshint-wrapper'
 let g:syntastic_less_checkers = [''] 
 " brew install tidy-html5
 let g:syntastic_html_tidy_exec = 'tidy'
@@ -768,7 +787,7 @@ let g:splitjoin_align=1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "--------------------------------------------------
-" => Unite
+" => Ctrlp
 "--------------------------------------------------
 let g:ctrlp_max_files=0
 let g:ctrlp_max_depth=10
