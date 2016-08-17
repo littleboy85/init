@@ -14,9 +14,11 @@ set autoread " Set autoread when a file is changed outside
 set autowrite " Write on make/shell commands
 set hidden " Turn on hidden"
 set history=1000 " Increase the lines of history
-set clipboard+=unnamed " Yanks go on clipboard instead
+set clipboard+=unnamedplus " Yanks go on clipboard instead
 set modeline " Turn on modeline
-set encoding=utf-8 " Set utf-8 encoding
+if !has('nvim')
+    set encoding=utf-8 " Set utf-8 encoding
+endif
 set completeopt+=longest " Optimize auto complete
 set completeopt-=preview " Optimize auto complete
 set mousehide " Hide mouse after chars typed
@@ -28,12 +30,6 @@ set noswapfile
 set noerrorbells
 set novisualbell
 set t_vb=
-
-if !has('gui_macvim')
-    vnoremap ã "+y
-    vmap ö c<ESC>"+p
-    imap ö <C-r><C-o>+
-endif
 
 " Set directories
 function! InitializeDirectories()
@@ -75,6 +71,20 @@ if has('win32') || has('win64')
     set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
 endif
 
+function! IsMac() 
+    if has('unix')
+        let s:uname = system('uname -s')
+        return s:uname == 'Darwin'
+    endif
+    return 0
+endfunction
+
+if !IsMac()
+    vnoremap <M-c> "+y
+    vmap <M-v> c<ESC>"+p
+    imap <M-v> <C-r><C-o>+
+endif
+
 set viewoptions+=slash,unix " Better Unix/Windows compatibility
 set viewoptions-=options " in case of mapping change
 set fileformats=unix,mac,dos " Auto detect the file formats
@@ -83,122 +93,105 @@ set fileformats=unix,mac,dos " Auto detect the file formats
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "--------------------------------------------------
-" => vundle setup
-"--------------------------------------------------
-set nocompatible
-let iCanHazVundle=1
-let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
-if !filereadable(vundle_readme)
-    echo "Installing Vundle..."
-    echo ""
-    silent !mkdir -p ~/.vim/bundle
-    silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
-    let iCanHazVundle=0
+" => Load vim-plug
+if empty(glob('~/.vim/autoload/plug.vim'))
+    execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 endif
+call plug#begin('~/.vim/pluggen')
 
 "--------------------------------------------------
-" => Plugins
+" => Plugs
 "--------------------------------------------------
-
-filetype off " Required!
-let g:vundle_default_git_proto='git'
-set rtp+=~/.vim/bundle/vundle/
-call vundle#begin()
-" Let Vundle manage Vundle
-Plugin 'gmarik/vundle'
 
 " ui
-Plugin 'bling/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " colour scheme
-Plugin 'w0ng/vim-hybrid' 
-" Plugin 'chriskempson/vim-tomorrow-theme'
-" Plugin 'altercation/vim-colors-solarized'
-" Plugin 'nanotech/jellybeans.vim'
-
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'fholgado/minibufexpl.vim'
-" Plugin 'mhinz/vim-startify'
-
+Plug 'w0ng/vim-hybrid' 
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'fholgado/minibufexpl.vim'
+" Plug 'mhinz/vim-startify'
 
 " Navigation
-" Plugin 'Lokaltog/vim-easymotion'
-Plugin 'terryma/vim-multiple-cursors'
-" Plugin 'michaeljsmith/vim-indent-object'
-" Plugin 'coderifous/textobj-word-column.vim'
-" Plugin 'tpope/vim-unimpaired'
-" Plugin 'zhaocai/GoldenView.Vim'
+" Plug 'Lokaltog/vim-easymotion'
+Plug 'terryma/vim-multiple-cursors'
+" Plug 'michaeljsmith/vim-indent-object'
+" Plug 'coderifous/textobj-word-column.vim'
+" Plug 'tpope/vim-unimpaired'
+" Plug 'zhaocai/GoldenView.Vim'
 " if has('python')
-    " Plugin 'sjl/gundo.vim'
+    " Plug 'sjl/gundo.vim'
 " else
-    " Plugin 'mbbill/undotree'
+    " Plug 'mbbill/undotree'
 " endif
 if executable('ctags')
-    Plugin 'majutsushi/tagbar'
+    Plug 'majutsushi/tagbar'
 endif
 
-"Plugin 'Shougo/unite.vim'
-Plugin 'ctrlpvim/ctrlp.vim'
+"Plug 'Shougo/unite.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 
-Plugin 'scrooloose/nerdtree'
-" Plugin 'jistr/vim-nerdtree-tabs'
+Plug 'scrooloose/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeFind']}
+" Plug 'jistr/vim-nerdtree-tabs'
 
 if executable('ag')
-    Plugin 'rking/ag.vim'
+    Plug 'rking/ag.vim'
 elseif executable('ack-grep') || executable('ack')
-    Plugin 'mileszs/ack.vim'
+    Plug 'mileszs/ack.vim'
 endif
 if executable('git')
-    Plugin 'Xuyuanp/nerdtree-git-plugin'
-    Plugin 'tpope/vim-fugitive'
-    Plugin 'airblade/vim-gitgutter.git'
+    Plug 'Xuyuanp/nerdtree-git-plugin'
+    Plug 'tpope/vim-fugitive'
+    Plug 'airblade/vim-gitgutter'
 endif
 
 " Short Cuts 
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'AndrewRadev/splitjoin.vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'AndrewRadev/splitjoin.vim'
 
 " Automatic Helper
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'tpope/vim-surround'
-Plugin 'Raimondi/delimitMate' " auto close quotes, parenthesise, brackets, etc.
-Plugin 'tpope/vim-repeat'
-Plugin 'SirVer/ultisnips' " snip
-Plugin 'honza/vim-snippets'
+function! DoRemote(arg)
+    UpdateRemotePlugins
+endfunction
+
+if has('nvim')
+    Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+else
+    Plug 'Valloric/YouCompleteMe', {'do': './install.py --tern-completer --clang-completer'}
+endif
+Plug 'tpope/vim-surround'
+Plug 'Raimondi/delimitMate' " auto close quotes, parenthesise, brackets, etc.
+Plug 'tpope/vim-repeat'
+Plug 'SirVer/ultisnips' " snip
+Plug 'honza/vim-snippets'
 
 " syntax error check
-Plugin 'scrooloose/syntastic'
+Plug 'scrooloose/syntastic'
 
 " Language related
-Plugin 'elzr/vim-json'
-Plugin 'groenewege/vim-less'
-Plugin 'vim-scripts/sql.vim--Stinson'
-Plugin 'django.vim'
-Plugin 'hynek/vim-python-pep8-indent'
-Plugin 'vim-scripts/indenthtml.vim'
+Plug 'elzr/vim-json'
+Plug 'groenewege/vim-less'
+Plug 'vim-scripts/sql.vim--Stinson'
+Plug 'django.vim'
+Plug 'hynek/vim-python-pep8-indent'
+Plug 'vim-scripts/indenthtml.vim'
 
-Plugin 'leafgarland/typescript-vim'
+Plug 'leafgarland/typescript-vim'
 
 " javascript
-" Plugin 'ternjs/tern_for_vim' " auto complete js support
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
-"Plugin 'othree/javascript-libraries-syntax.vim'
-"Plugin 'othree/yajs.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+"Plug 'othree/javascript-libraries-syntax.vim'
+"Plug 'othree/yajs.vim'
 
 " html
-Plugin 'mattn/emmet-vim'
+Plug 'mattn/emmet-vim'
 
 " change root dir by find git
-Plugin 'airblade/vim-rooter'
+Plug 'airblade/vim-rooter'
 
-" Local bundles if avaiable
-if filereadable(expand("$HOME/.vimrc.bundles.local"))
-    source $HOME/.vimrc.bundles.local
-endif
-call vundle#end()
-filetype plugin indent on " Required!
+call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " spell check
@@ -287,7 +280,9 @@ set scrolljump=5 " Lines to scroll when cursor leaves screen
 set scrolloff=3 " Minimum lines to keep above and below cursor
 set sidescroll=1 " Minimal number of columns to scroll horizontally
 set sidescrolloff=10 " Minimal number of screen columns to keep away from cursor
-set columns=88
+if has('gui_running')
+    set columns=88
+endif
 
 set showmatch " Show matching brackets/parenthesis
 set matchtime=2 " Decrease the time to blink
@@ -355,6 +350,7 @@ if has('gui_running')
         set guifont=Consolas:h11:cANSI
     endif
 endif
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -599,11 +595,6 @@ let g:airline#extensions#default#section_truncate_width = {
       \ 'x': 100,
       \ 'y': 100,
       \ }
-" let g:airline_section_a = ''
-" let g:airline_section_b = ''
-" let g:airline_section_gutter = ''
-" let g:airline_section_x = ''
-" let g:airline_section_y = ''
 let g:airline_skip_empty_sections = 1
 let g:airline#extensions#whitespace#enabled = 0
 
@@ -621,20 +612,8 @@ let g:tagbar_autoshowtag=1
 "--------------------------------------------------
 " => NERD_tree
 "--------------------------------------------------
-function! MyNERDTreeToggle()
-    let size = g:NERDTreeWinSize + 1
-    if g:NERDTree.IsOpen()
-        NERDTreeToggle
-        exec("set columns-=" . size)
-    else
-        NERDTreeFind
-        exec("set columns+=" . size)
-    endif
-    wincmd p
-endfunction
-
 nnoremap <Leader>d :NERDTreeToggle<CR>
-nnoremap <Leader>f :call MyNERDTreeToggle()<CR>
+nnoremap <Leader>f :NERDTreeFind<CR>
 
 let NERDTreeChDirMode=2
 let NERDTreeShowBookmarks=1
@@ -776,34 +755,20 @@ let g:splitjoin_join_mapping = ',j'
 let g:splitjoin_normalize_whitespace=1
 let g:splitjoin_align=1
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "--------------------------------------------------
-" => Unite
+" => Shougo/deoplete
 "--------------------------------------------------
-" let g:unite_enable_start_insert=1
-" call unite#custom#source('file_rec', 'ignore_pattern', '\.\(pyc\|png\|gif\|jpg\)$')
-" nnoremap <Leader>u :Unite<Space>
-" nnoremap <C-P> :Unite file_rec:!<CR>
+let g:deoplete#enable_at_startup = 1
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "--------------------------------------------------
 " => Ctrlp
 "--------------------------------------------------
 let g:ctrlp_max_files=0
 let g:ctrlp_max_depth=10
+let g:ctrlp_reuse_window = ''
+let g:ctrlp_open_new_file = 'r'
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"--------------------------------------------------
-" => tern_for_vim
-"--------------------------------------------------
-nnoremap <Leader>td :TernDoc<CR>
-nnoremap <Leader>td :TernDef<CR>
-nnoremap <Leader>tpd :TernDefPreview<CR>
-nnoremap <Leader>tsd :TernDefSplit<CR>
-nnoremap <Leader>tt :TernType<CR>
-nnoremap <Leader>tr :TernRefs<CR>
 
 "--------------------------------------------------
 " => Indent Guides
