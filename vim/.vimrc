@@ -490,6 +490,12 @@ augroup ft_javascript
     autocmd Filetype javascript let g:indent_guides_guide_size=2
 augroup END
 
+augroup ft_scss
+    autocmd!
+    autocmd Filetype scss setlocal shiftwidth=2 softtabstop=2
+    autocmd Filetype scss let g:indent_guides_guide_size=2
+augroup END
+
 " html
 augroup ft_html
     autocmd!
