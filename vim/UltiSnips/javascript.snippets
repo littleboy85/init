@@ -1,7 +1,11 @@
 snippet f "anonymous function" w
 function($1) {
-	${VISUAL}$0
+  ${VISUAL}$0
 }
+endsnippet
+
+snippet ff "arrow function" w
+($1) => {${VISUAL}$0}
 endsnippet
 
 snippet def "define an AMD module"
@@ -26,4 +30,6 @@ endsnippet
 
 snippet /
 <$1/>
+
+
 endsnippet
