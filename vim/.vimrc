@@ -111,26 +111,21 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'w0ng/vim-hybrid' 
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'fholgado/minibufexpl.vim'
-" Plug 'mhinz/vim-startify'
+Plug 'mhinz/vim-startify'
 
 " Navigation
 " Plug 'Lokaltog/vim-easymotion'
 Plug 'terryma/vim-multiple-cursors'
-" Plug 'michaeljsmith/vim-indent-object'
-" Plug 'coderifous/textobj-word-column.vim'
 " Plug 'tpope/vim-unimpaired'
 " Plug 'zhaocai/GoldenView.Vim'
-" if has('python')
-    " Plug 'sjl/gundo.vim'
-" else
-    " Plug 'mbbill/undotree'
-" endif
 if executable('ctags')
     Plug 'majutsushi/tagbar'
 endif
 
 "Plug 'Shougo/unite.vim'
-Plug 'ctrlpvim/ctrlp.vim'
+"Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --bin '}
+Plug 'junegunn/fzf.vim'
 
 Plug 'scrooloose/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeFind']}
 " Plug 'jistr/vim-nerdtree-tabs'
@@ -167,7 +162,8 @@ Plug 'SirVer/ultisnips' " snip
 Plug 'honza/vim-snippets'
 
 " syntax error check
-Plug 'scrooloose/syntastic'
+" Plug 'scrooloose/syntastic'
+Plug 'neomake/neomake'
 
 " Language related
 Plug 'elzr/vim-json'
@@ -695,31 +691,41 @@ endif
 "--------------------------------------------------
 " => Syntastic
 "--------------------------------------------------
-nnoremap <Leader>s :Errors<CR>
-" set statusline=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_auto_jump = 1
+" nnoremap <Leader>s :Errors<CR>
+" " set statusline=%#warningmsg#
+" " set statusline+=%{SyntasticStatuslineFlag()}
+" " set statusline+=%*
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_auto_jump = 1
 
-" let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
-" let g:syntastic_enable_highlighting = 0
-let g:syntastic_javascript_checkers = ['eslint']
-" let g:syntastic_javascript_jsxhint_exec = 'jsx-jshint-wrapper'
-let g:syntastic_less_checkers = [''] 
-" brew install tidy-html5
-let g:syntastic_html_tidy_exec = 'tidy'
-let g:syntastic_html_tidy_quiet_messages={
-            \ 'regex': [
-            \   'discarding unexpected <.*-',
-            \   '> is not recognized',
-            \   'trimming empty <',
-            \   'attribute name']
-            \}
-"let g:syntastic_html_tidy_ignore_errors=[]
+" " let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
+" " let g:syntastic_enable_highlighting = 0
+" let g:syntastic_javascript_checkers = ['eslint']
+" " let g:syntastic_javascript_jsxhint_exec = 'jsx-jshint-wrapper'
+" let g:syntastic_less_checkers = [''] 
+" " brew install tidy-html5
+" let g:syntastic_html_tidy_exec = 'tidy'
+" let g:syntastic_html_tidy_quiet_messages={
+            " \ 'regex': [
+            " \   'discarding unexpected <.*-',
+            " \   '> is not recognized',
+            " \   'trimming empty <',
+            " \   'attribute name']
+            " \}
+" "let g:syntastic_html_tidy_ignore_errors=[]
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"--------------------------------------------------
+" => neomake/neomake
+"--------------------------------------------------
+let g:neomake_javascript_eslint_maker = {
+    \ 'args': ['--verbose'],
+    \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
+    \ }
+let g:neomake_javascript_enabled_makers = ['eslint']
+autocmd! BufWritePost * Neomake
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "--------------------------------------------------
@@ -766,14 +772,38 @@ let g:splitjoin_align=1
 "--------------------------------------------------
 let g:deoplete#enable_at_startup = 1
 
+function! Multiple_cursors_before()
+    let b:deoplete_disable_auto_complete = 1
+endfunction
+
+function! Multiple_cursors_after()
+    let b:deoplete_disable_auto_complete = 0
+endfunction
+
 "--------------------------------------------------
 " => Ctrlp
 "--------------------------------------------------
-let g:ctrlp_max_files=0
-let g:ctrlp_max_depth=10
-let g:ctrlp_reuse_window = ''
-let g:ctrlp_open_new_file = 'r'
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+" let g:ctrlp_max_files=0
+" let g:ctrlp_max_depth=10
+" let g:ctrlp_reuse_window = ''
+" let g:ctrlp_open_new_file = 'r'
+" let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+
+"--------------------------------------------------
+" => junegunn/fzf
+"--------------------------------------------------
+
+let g:fzf_layout={'down': '~40%'}
+let g:fzf_history_dir='~/.fzf-history'
+let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+map <C-p> :Files<cr>
+nmap <C-p> :Files<cr>
+nmap <Leader>c :Commits<cr>
+" let g:ctrlp_max_depth=10
+" let g:ctrlp_reuse_window = ''
+" let g:ctrlp_open_new_file = 'r'
+" let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+
 
 
 "--------------------------------------------------
