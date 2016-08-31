@@ -33,6 +33,32 @@ set noerrorbells
 set novisualbell
 set t_vb=
 
+" Set directories
+function! InitializeDirectories()
+    let parent=$HOME
+    let prefix='.vim'
+    let dir_list={
+                \ 'backup': 'backupdir',
+                \ 'view': 'viewdir',
+                \ 'undo': 'undodir'}
+    "\ 'swap': 'directory',
+    for [dirname, settingname] in items(dir_list)
+        let directory=parent.'/'.prefix.'/'.dirname.'/'
+        if !isdirectory(directory)
+            if exists('*mkdir')
+                call mkdir(directory)
+                exec 'set '.settingname.'='.directory
+            else
+                echo "Warning: Unable to create directory: ".directory
+                echo "Try: mkdir -p ".directory
+            endif
+        else
+            exec 'set '.settingname.'='.directory
+        endif
+    endfor
+endfunction
+call InitializeDirectories()
+
 autocmd BufWinLeave *.* silent! mkview " Make Vim save view (state) (folds, cursor, etc)
 autocmd BufWinEnter *.* silent! loadview " Make Vim load view (state) (folds, cursor, etc)
 
@@ -649,9 +675,10 @@ let g:neomake_open_list = 2
 let g:neomake_verbose = 3
 let g:neomake_javascript_eslint_maker = {
     \ 'exe': 'eslint_d',
-    \ 'args': ['--verbose'],
-    \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
     \ }
+"    \ 'args': ['--verbose'],
+"    \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
+
 let g:neomake_javascript_enabled_makers = ['eslint']
 autocmd! BufWritePost * Neomake
 
