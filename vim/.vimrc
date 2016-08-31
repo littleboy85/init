@@ -670,16 +670,14 @@ endif
 "--------------------------------------------------
 " => neomake/neomake
 "--------------------------------------------------
-let g:neomake_list_height = 2
 let g:neomake_open_list = 2
-let g:neomake_verbose = 3
 let g:neomake_javascript_eslint_maker = {
-    \ 'exe': 'eslint_d',
+    \ 'args': ['--no-color', '--format', 'compact'],
+    \ 'errorformat': '%f: line %l\, col %c\, %m'
     \ }
-"    \ 'args': ['--verbose'],
-"    \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
-
 let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_jsx_enabled_makers = ['eslint']
+
 autocmd! BufWritePost * Neomake
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
