@@ -7,13 +7,15 @@ let mapleader=','
 let maplocalleader='\'
 set timeoutlen=500
 " auto source vimrc after save
-autocmd BufWritePost .vimrc source $MYVIMRC 
-" Fast edit the .vimrc file using ',x'
-nnoremap <Leader>x :tabedit $MYVIMRC<CR> 
+augroup reload_vimrc " {
+    autocmd!
+    autocmd BufWritePost $MYVIMRC source $MYVIMRC 
+augroup END " }
+
 set autoread " Set autoread when a file is changed outside
 set autowrite " Write on make/shell commands
 set hidden " Turn on hidden"
-set history=1000 " Increase the lines of history
+set history=2000 " Increase the lines of history
 set clipboard+=unnamedplus " Yanks go on clipboard instead
 set modeline " Turn on modeline
 if !has('nvim')
@@ -39,7 +41,7 @@ function! InitializeDirectories()
                 \ 'backup': 'backupdir',
                 \ 'view': 'viewdir',
                 \ 'undo': 'undodir'}
-                "\ 'swap': 'directory',
+    "\ 'swap': 'directory',
     for [dirname, settingname] in items(dir_list)
         let directory=parent.'/'.prefix.'/'.dirname.'/'
         if !isdirectory(directory)
@@ -106,34 +108,28 @@ call plug#begin('~/.vim/pluggen')
 " ui
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+if has('nvim')
+    Plug 'kassio/neoterm'
+endif
 
 " colour scheme
 Plug 'w0ng/vim-hybrid' 
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'fholgado/minibufexpl.vim'
-" Plug 'mhinz/vim-startify'
+Plug 'mhinz/vim-startify'
 
 " Navigation
 " Plug 'Lokaltog/vim-easymotion'
 Plug 'terryma/vim-multiple-cursors'
-" Plug 'michaeljsmith/vim-indent-object'
-" Plug 'coderifous/textobj-word-column.vim'
 " Plug 'tpope/vim-unimpaired'
-" Plug 'zhaocai/GoldenView.Vim'
-" if has('python')
-    " Plug 'sjl/gundo.vim'
-" else
-    " Plug 'mbbill/undotree'
-" endif
 if executable('ctags')
     Plug 'majutsushi/tagbar'
 endif
 
-"Plug 'Shougo/unite.vim'
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --bin '}
+Plug 'junegunn/fzf.vim'
 
 Plug 'scrooloose/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeFind']}
-" Plug 'jistr/vim-nerdtree-tabs'
 
 if executable('ag')
     Plug 'rking/ag.vim'
@@ -157,6 +153,7 @@ endfunction
 
 if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+    Plug 'carlitux/deoplete-ternjs', {'on_ft': 'javascript'}
 else
     Plug 'Valloric/YouCompleteMe', {'do': './install.py --tern-completer --clang-completer'}
 endif
@@ -167,17 +164,21 @@ Plug 'SirVer/ultisnips' " snip
 Plug 'honza/vim-snippets'
 
 " syntax error check
-Plug 'scrooloose/syntastic'
+if has('nvim')
+    Plug 'neomake/neomake'
+else
+    Plug 'scrooloose/syntastic'
+endif
 
 " Language related
 Plug 'elzr/vim-json'
 Plug 'groenewege/vim-less'
-Plug 'vim-scripts/sql.vim--Stinson'
-Plug 'django.vim'
+"Plug 'vim-scripts/sql.vim--Stinson'
+"Plug 'django.vim'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'vim-scripts/indenthtml.vim'
 
-Plug 'leafgarland/typescript-vim'
+"Plug 'leafgarland/typescript-vim'
 
 " javascript
 Plug 'pangloss/vim-javascript'
@@ -216,47 +217,6 @@ autocmd BufRead,BufNewFile * :call IgnoreCamelCaseSpell()
 set title
 set titlestring=%t%(\ %M%)%(\ (%{expand(\"%:p:h\")})%)%(\ %a%)\ -\ %{v:servername}
 
-" Set tabline
-set showtabline=2 " Always show tab line
-" Set up tab labels
-set guitablabel=%m%N:%t\[%{tabpagewinnr(v:lnum)}\]
-set tabline=%!MyTabLine()
-function! MyTabLine()
-    let s=''
-    let t=tabpagenr() " The index of current page
-    let i=1
-    while i<=tabpagenr('$') " From the first page
-        let buflist=tabpagebuflist(i)
-        let winnr=tabpagewinnr(i)
-        let s.=(i==t?'%#TabLineSel#':'%#TabLine#')
-        let s.='%'.i.'T'
-        let s.=' '
-        let bufnr=buflist[winnr - 1]
-        let file=bufname(bufnr)
-        let m=''
-        if getbufvar(bufnr, "&modified")
-            let m='[+]'
-        endif
-        if file=~'\/.'
-            let file=substitute(file,'.*\/\ze.','','')
-        endif
-        if file==''
-            let file='[No Name]'
-        endif
-        let s.=m
-        let s.=i.':'
-        let s.=file
-        let s.='['.winnr.']'
-        let s.=' '
-        let i=i+1
-    endwhile
-    let s.='%T%#TabLineFill#%='
-    let s.=(tabpagenr('$')>1?'%999XX':'X')
-    return s
-endfunction
-" Set up tab tooltips with every buffer name
-set guitabtooltip=%F
-
 " Set status line
 set laststatus=2 " Show the statusline
 set noshowmode " Hide the default mode text
@@ -286,21 +246,9 @@ endif
 
 set showmatch " Show matching brackets/parenthesis
 set matchtime=2 " Decrease the time to blink
-" Use Tab instead of % to switch using matchit
-nmap <Tab> %
-vmap <Tab> %
 
-"set number " Show line numbers
 set relativenumber
-" Toggle relativenumber
-function! ToggleRelativenumber()
-    if &number==1
-        set relativenumber
-    else
-        set number
-    endif
-endfunction
-nnoremap <Leader>n :call ToggleRelativenumber()<CR>
+set number
 
 set formatoptions+=rnlmM " Optimize format options
 set wrap " Set wrap
@@ -399,8 +347,6 @@ endfunction
 vnoremap * :<C-U>call <SID>VSetSearch()<CR>//<CR>
 vnoremap # :<C-U>call <SID>VSetSearch()<CR>??<CR>
 
-" Use ,Space to toggle the highlight search
-nnoremap <Leader><Space> :set hlsearch!<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "-------------------------------------------------
@@ -695,31 +641,44 @@ endif
 "--------------------------------------------------
 " => Syntastic
 "--------------------------------------------------
-nnoremap <Leader>s :Errors<CR>
-" set statusline=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_auto_jump = 1
+" nnoremap <Leader>s :Errors<CR>
+" " set statusline=%#warningmsg#
+" " set statusline+=%{SyntasticStatuslineFlag()}
+" " set statusline+=%*
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_auto_jump = 1
 
-" let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
-" let g:syntastic_enable_highlighting = 0
-let g:syntastic_javascript_checkers = ['eslint']
-" let g:syntastic_javascript_jsxhint_exec = 'jsx-jshint-wrapper'
-let g:syntastic_less_checkers = [''] 
-" brew install tidy-html5
-let g:syntastic_html_tidy_exec = 'tidy'
-let g:syntastic_html_tidy_quiet_messages={
-            \ 'regex': [
-            \   'discarding unexpected <.*-',
-            \   '> is not recognized',
-            \   'trimming empty <',
-            \   'attribute name']
-            \}
-"let g:syntastic_html_tidy_ignore_errors=[]
+" " let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
+" " let g:syntastic_enable_highlighting = 0
+" let g:syntastic_javascript_checkers = ['eslint']
+" " let g:syntastic_javascript_jsxhint_exec = 'jsx-jshint-wrapper'
+" let g:syntastic_less_checkers = [''] 
+" " brew install tidy-html5
+" let g:syntastic_html_tidy_exec = 'tidy'
+" let g:syntastic_html_tidy_quiet_messages={
+            " \ 'regex': [
+            " \   'discarding unexpected <.*-',
+            " \   '> is not recognized',
+            " \   'trimming empty <',
+            " \   'attribute name']
+            " \}
+" "let g:syntastic_html_tidy_ignore_errors=[]
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"--------------------------------------------------
+" => neomake/neomake
+"--------------------------------------------------
+let g:neomake_open_list = 2
+let g:neomake_javascript_eslint_maker = {
+    \ 'args': ['--no-color', '--format', 'compact'],
+    \ 'errorformat': '%f: line %l\, col %c\, %m'
+    \ }
+let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_jsx_enabled_makers = ['eslint']
+
+autocmd! BufWritePost * Neomake
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "--------------------------------------------------
@@ -766,15 +725,24 @@ let g:splitjoin_align=1
 "--------------------------------------------------
 let g:deoplete#enable_at_startup = 1
 
-"--------------------------------------------------
-" => Ctrlp
-"--------------------------------------------------
-let g:ctrlp_max_files=0
-let g:ctrlp_max_depth=10
-let g:ctrlp_reuse_window = ''
-let g:ctrlp_open_new_file = 'r'
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+function! Multiple_cursors_before()
+    let b:deoplete_disable_auto_complete = 1
+endfunction
 
+function! Multiple_cursors_after()
+    let b:deoplete_disable_auto_complete = 0
+endfunction
+
+"--------------------------------------------------
+" => junegunn/fzf
+"--------------------------------------------------
+
+let g:fzf_layout={'down': '~40%'}
+let g:fzf_history_dir='~/.fzf-history'
+let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+map <C-p> :Files<cr>
+nmap <C-p> :Files<cr>
+nmap <Leader>c :Commits<cr>
 
 "--------------------------------------------------
 " => Indent Guides
@@ -796,4 +764,15 @@ let g:indent_guides_guide_size=1
 " => startify
 "--------------------------------------------------
 let g:startify_list_order = ['files', 'dir', 'bookmarks', 'sessions']
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"--------------------------------------------------
+" => terminal
+"--------------------------------------------------
+
+if has('nvim')
+    tnoremap <Esc> <C-\><C-n>
+endif
+
+
 
