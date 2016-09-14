@@ -46,3 +46,7 @@ textarea
 configs
 rect
 contextmenu
+lodash
+utils
+redux
+mimetype
