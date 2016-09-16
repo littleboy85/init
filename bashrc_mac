@@ -17,8 +17,6 @@ extend_env () {
     fi
 }
 
-export JAVA_HOME=`/usr/libexec/java_home`
-extend_env "PATH" "$JAVA_HOME/bin" ":"
 extend_env "PATH" "/usr/local/sbin" ":"
 extend_env "PATH" "/usr/local/bin" ":"
 extend_env "PATH" "/usr/local/share/npm/bin" ":"

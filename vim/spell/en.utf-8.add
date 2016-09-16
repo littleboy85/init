@@ -30,7 +30,6 @@ defs
 linechart
 addons
 TCService
-lodash
 DOMContentLoaded
 ctrl
 params
@@ -46,3 +45,8 @@ textarea
 configs
 rect
 contextmenu
+Cmd
+lodash
+utils
+redux
+mimetype
