@@ -50,3 +50,10 @@ lodash
 utils
 redux
 mimetype
+urijs
+oauth
+userinfo
+commonsku
+openid
+polyfill
+middleware

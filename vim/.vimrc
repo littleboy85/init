@@ -160,8 +160,9 @@ endif
 Plug 'tpope/vim-surround'
 Plug 'Raimondi/delimitMate' " auto close quotes, parenthesise, brackets, etc.
 Plug 'tpope/vim-repeat'
-Plug 'SirVer/ultisnips' " snip
+Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'justinj/vim-react-snippets'
 
 " syntax error check
 if has('nvim')

@@ -30,6 +30,20 @@ endsnippet
 
 snippet /
 <$1/>
+endsnippet
 
+snippet ec "extends Component"
+class $1 extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
 
+  render() {
+    $0
+    return (
+      $2
+    );
+  }
+}
 endsnippet
