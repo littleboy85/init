@@ -58,3 +58,4 @@ openid
 polyfill
 middleware
 popup
+async
