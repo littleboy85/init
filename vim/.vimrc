@@ -288,7 +288,6 @@ set background=dark " Set background
 if !has('gui_running') || $COLORTERM == 'gnome-terminal'
     set t_Co=256 " Use 256 colors
 endif
-colorscheme hybrid " Load a colorscheme
 
 if has('gui_running')
     if has('gui_gtk')
@@ -551,6 +550,10 @@ let g:airline#extensions#default#section_truncate_width = {
 let g:airline_skip_empty_sections = 1
 let g:airline#extensions#whitespace#enabled = 0
 
+"--------------------------------------------------
+" => vim-hybrid
+"--------------------------------------------------
+colorscheme hybrid " Load a colorscheme
 "--------------------------------------------------
 " => Tagbar
 "--------------------------------------------------

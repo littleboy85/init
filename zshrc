@@ -6,7 +6,6 @@ source $ZPLUG_HOME/init.zsh
 
 export TERM="xterm-256color"
 export PATH=${HOME}/bin:/usr/local/bin:${PATH}
-export ZSH=$HOME/.oh-my-zsh
 export REACT_EDITOR=nvim
 export EDITOR=nvim
 

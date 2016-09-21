@@ -6,28 +6,19 @@ if ! which brew; then
 fi
 get="brew install"
 
-$get macvim git wget python ack
+$get nvm git wget python ag zsh autojump
 pip install --upgrade distribute
 pip install --upgrade pip
-pip install virtualenv
-git config --global core.editor "vim"
+pip install virtualenv thefuck
+git config --global core.editor "nvim"
 git config --global user.name "Xiaohan Zhang"
 git config --global user.email xiaohan.zhang@me.com
 
-if [ -f ~/.vim ]; then
-	mv ~/.vim vim.old
+if [ -f ~/.config/nvim/init.vim ]; then
+	mv ~/.config/nvim/init.vim init.vim.old
 fi
-if [ -f ~/.vimrc ]; then
-	mv ~/.vimrc vimrc.old
+if [ -f ~/.zshrc ]; then
+	mv ~/.zshrc zshrc.old
 fi
-if [ -f ~/.bashrc ]; then
-	mv ~/.bashrc bashrc.old
-fi
-if [ -f ~/.bash_profile ]; then
-	mv ~/.bash_profile bash_profile.old
-fi
-ln -sf ~/init/vim ~/.vim
-ln -sf ~/.vim/.vimrc ~/.vimrc
-ln -sf ~/init/bashrc_mac ~/.bashrc
-ln -sf ~/init/bash_profile ~/.bash_profile
-ln -sf ~/init/shortcut.sh ~/.shortcut.sh
+ln -sf ~/vimrc ~/.config/nvim/init.vim
+ln -sf ~/init/zshrc ~/.zshrc
