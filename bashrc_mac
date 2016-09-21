@@ -17,6 +17,8 @@ extend_env () {
     fi
 }
 
+export JAVA_HOME=`/usr/libexec/java_home`
+extend_env "PATH" "$JAVA_HOME/bin" ":"
 extend_env "PATH" "/usr/local/sbin" ":"
 extend_env "PATH" "/usr/local/bin" ":"
 extend_env "PATH" "/usr/local/share/npm/bin" ":"
@@ -42,4 +44,7 @@ export HOMEBREW_GITHUB_API_TOKEN="c2675a02b566bac96cceefeb43b0df302eb9ec85"
 
 export NVM_DIR="$HOME/.nvm"
 . "$(brew --prefix nvm)/nvm.sh" --no-use
+NODE_VERSION=`nvm version node`
+export PATH="${PATH}:${NVM_DIR}/versions/node/${NODE_VERSION}/bin"
+export REACT_EDITOR=nvim
 source ~/.shortcut.sh
