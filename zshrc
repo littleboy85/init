@@ -5,19 +5,16 @@ fi
 source $ZPLUG_HOME/init.zsh 
 
 export TERM="xterm-256color"
-export PATH=${HOME}/bin:/usr/local/bin:${PATH}
+export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
 export REACT_EDITOR=nvim
 export EDITOR=nvim
 
-export NVM_DIR="$HOME/.nvm"
-source "$(brew --prefix nvm)/nvm.sh" --no-use
-NODE_VERSION=`nvm version node`
-export PATH="${PATH}:${NVM_DIR}/versions/node/${NODE_VERSION}/bin"
 autoload -Uz colors; colors
 autoload -Uz is-at-least; is-at-least
 setopt prompt_subst
 
 zplug "robbyrussell/oh-my-zsh", use:oh-my-zsh.sh
+zplug "~/init/zsh", from:local
 zplug "mafredri/zsh-async", on:sindresorhus/pure
 zplug "sindresorhus/pure", nice:10
 zplug "plugins/git", from:oh-my-zsh
@@ -35,5 +32,3 @@ if ! zplug check --verbose; then
 fi
 
 zplug load --verbose
-
-# https://github.com/p-e-w/maybe
