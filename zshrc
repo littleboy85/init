@@ -13,6 +13,7 @@ autoload -Uz colors; colors
 autoload -Uz is-at-least; is-at-least
 setopt prompt_subst
 
+zplug "zplug/zplug"
 zplug "robbyrussell/oh-my-zsh", use:oh-my-zsh.sh
 zplug "~/init/zsh", from:local
 zplug "mafredri/zsh-async", on:sindresorhus/pure
