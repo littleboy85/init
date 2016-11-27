@@ -59,3 +59,5 @@ polyfill
 middleware
 popup
 async
+mimetype
+App
