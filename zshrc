@@ -17,13 +17,13 @@ zplug "zplug/zplug"
 zplug "robbyrussell/oh-my-zsh", use:oh-my-zsh.sh
 zplug "~/init/zsh", from:local
 zplug "mafredri/zsh-async", on:sindresorhus/pure
-zplug "sindresorhus/pure", nice:10
+zplug "sindresorhus/pure", defer:2
 zplug "plugins/git", from:oh-my-zsh
-zplug "plugins/thefuck", from:oh-my-zsh, nice:10
-zplug "plugins/autojump", from:oh-my-zsh, nice:10
-zplug "plugins/vi-mode", from:oh-my-zsh, nice:10
-zplug "plugins/common-aliases", from:oh-my-zsh, nice:10
-zplug "plugins/compleat", from:oh-my-zsh, nice:10
+zplug "plugins/thefuck", from:oh-my-zsh, defer:2
+zplug "plugins/autojump", from:oh-my-zsh, defer:2
+zplug "plugins/vi-mode", from:oh-my-zsh, defer:2
+zplug "plugins/common-aliases", from:oh-my-zsh, defer:2
+zplug "plugins/compleat", from:oh-my-zsh, defer:2
 
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
