@@ -140,7 +140,7 @@ endif
 if executable('git')
     Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'tpope/vim-fugitive'
-    " Plug 'airblade/vim-gitgutter'
+    Plug 'airblade/vim-gitgutter'
 endif
 
 " Short Cuts 
