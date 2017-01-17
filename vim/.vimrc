@@ -32,6 +32,7 @@ set noswapfile
 set noerrorbells
 set novisualbell
 set t_vb=
+au CursorHold * checktime
 
 " Set directories
 function! InitializeDirectories()
@@ -139,7 +140,7 @@ endif
 if executable('git')
     Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'tpope/vim-fugitive'
-    Plug 'airblade/vim-gitgutter'
+    " Plug 'airblade/vim-gitgutter'
 endif
 
 " Short Cuts 
