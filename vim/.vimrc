@@ -32,6 +32,7 @@ set noswapfile
 set noerrorbells
 set novisualbell
 set t_vb=
+au CursorHold * checktime
 
 " Set directories
 function! InitializeDirectories()
