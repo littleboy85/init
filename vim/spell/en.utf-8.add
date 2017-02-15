@@ -58,6 +58,8 @@ polyfill
 middleware
 popup
 async
+geocoder
+devtools
 prevs
 denormalizr
 normalizr
