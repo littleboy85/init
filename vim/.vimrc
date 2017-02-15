@@ -124,7 +124,7 @@ Plug 'mhinz/vim-startify'
 Plug 'terryma/vim-multiple-cursors'
 " Plug 'tpope/vim-unimpaired'
 if executable('ctags')
-    Plug 'majutsushi/tagbar'
+    " Plug 'majutsushi/tagbar'
 endif
 
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --bin '}
