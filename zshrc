@@ -33,3 +33,5 @@ if ! zplug check --verbose; then
 fi
 
 zplug load --verbose
+
+setopt no_share_history

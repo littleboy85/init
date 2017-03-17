@@ -94,3 +94,8 @@ jsonwebtoken
 kcors
 bodyparser
 OAuth2AccessToken
+rgba
+undef
+newrelic
+namespace
+stacktrace
