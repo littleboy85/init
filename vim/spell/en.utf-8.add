@@ -95,3 +95,8 @@ kcors
 bodyparser
 OAuth2AccessToken
 unhandled
+rgba
+undef
+newrelic
+namespace
+stacktrace
