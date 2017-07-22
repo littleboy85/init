@@ -34,6 +34,9 @@ set novisualbell
 set t_vb=
 au CursorHold * checktime
 
+let g:python2_host_prog = '/usr/local/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'
+
 " Set directories
 function! InitializeDirectories()
     let parent=$HOME

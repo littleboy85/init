@@ -6,13 +6,13 @@ if ! which brew; then
 fi
 get="brew install"
 
-$get nvm git wget python ag zsh autojump
+$get git wget python python3 ag zsh autojump watchman
 pip install --upgrade distribute
 pip install --upgrade pip
 pip install virtualenv thefuck
 git config --global core.editor "nvim"
 git config --global user.name "Xiaohan Zhang"
-git config --global user.email xiaohan.zhang@me.com
+git config --global user.email xiaohan.zhang.xz@gmail.com
 
 if [ -f ~/.config/nvim/init.vim ]; then
 	mv ~/.config/nvim/init.vim init.vim.old
@@ -20,5 +20,11 @@ fi
 if [ -f ~/.zshrc ]; then
 	mv ~/.zshrc zshrc.old
 fi
-ln -sf ~/vimrc ~/.config/nvim/init.vim
+mkdir -p ~/.config
+ln -sf ~/init/vim ~/.vim
+ln -sf ~/init/vim/.vimrc ~/.vimrc
+ln -sf ~/init/vim/.vimrc ~/init/vim/init.vim
+ln -sf ~/.vim ~/.config/nvim
 ln -sf ~/init/zshrc ~/.zshrc
+sudo sh -c "echo '/usr/local/bin/zsh' >> /etc/shells"
+chsh -s $(which zsh)
