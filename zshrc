@@ -34,3 +34,5 @@ fi
 
 zplug load --verbose
 setopt no_share_history
+
+alias nginxerror="tail -f /usr/local/var/log/nginx/error.log"
