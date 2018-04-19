@@ -243,12 +243,13 @@
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>905 596 700 622 0 0 2560 1417 </string>
 	<key>NSWindow Frame SessionsPreferences</key>
-	<string>269 139 606 456 0 0 2560 1417 </string>
+	<string>269 139 606 469 0 0 2560 1417 </string>
 	<key>NSWindow Frame SharedPreferences</key>
 	<string>303 416 796 473 0 0 2560 1417 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>230 833 592 584 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
+<<<<<<< HEAD
 	<string>327 86 1173 830 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>389 48 963 781 0 0 2560 1417 </string>
@@ -274,6 +275,19 @@
 	<string>1135 636 1173 781 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 5</key>
 	<string>758 378 837 833 0 0 2560 1417 </string>
+=======
+	<string>598 -52 850 1327 0 0 2560 1417 </string>
+	<key>NSWindow Frame iTerm Window 1</key>
+	<string>-43 142 983 1275 0 0 2560 1417 </string>
+	<key>NSWindow Frame iTerm Window 2</key>
+	<string>968 116 899 1301 0 0 2560 1417 </string>
+	<key>NSWindow Frame iTerm Window 3</key>
+	<string>63 433 2397 833 0 0 2560 1417 </string>
+	<key>NSWindow Frame iTerm Window 4</key>
+	<string>300 -583 941 560 163 -900 1440 877 </string>
+	<key>NSWindow Frame iTerm Window 5</key>
+	<string>832 -640 570 352 163 -900 1440 877 </string>
+>>>>>>> 45d8063f36f7f73f25f2e5503b9e2eb50746571f
 	<key>NSWindow Frame iTerm Window 6</key>
 	<string>1173 326 665 527 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 7</key>
@@ -1828,9 +1842,15 @@
 	<key>NoSyncDoNotWarnBeforeMultilinePaste_selection</key>
 	<integer>0</integer>
 	<key>NoSyncInstallationId</key>
+<<<<<<< HEAD
 	<string>7667A42B-98F9-409F-B6E1-98D2901DCC71</string>
 	<key>NoSyncLastTipTime</key>
 	<real>501816388.54135603</real>
+=======
+	<string>073DE447-2687-4B3D-B491-ABAD1255368C</string>
+	<key>NoSyncLastTipTime</key>
+	<real>520526846.44883198</real>
+>>>>>>> 45d8063f36f7f73f25f2e5503b9e2eb50746571f
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -1838,11 +1858,15 @@
 	<key>NoSyncPermissionToShowTip</key>
 	<true/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
+<<<<<<< HEAD
 	<real>494216836.66550899</real>
 	<key>NoSyncTimeOfLastPromo</key>
 	<real>459141307.56548202</real>
 	<key>NoSyncTimeOfLastPromoDownload</key>
 	<real>460264652.59383202</real>
+=======
+	<real>519757816.82240099</real>
+>>>>>>> 45d8063f36f7f73f25f2e5503b9e2eb50746571f
 	<key>NoSyncTipsDisabled</key>
 	<true/>
 	<key>NoSyncTipsToNotShow</key>
@@ -1851,6 +1875,7 @@
 		<string>0000</string>
 		<string>0001</string>
 		<string>0002</string>
+<<<<<<< HEAD
 		<string>0003</string>
 		<string>0004</string>
 		<string>0005</string>
@@ -1885,6 +1910,8 @@
 		<string>0034</string>
 		<string>0035</string>
 		<string>0036</string>
+=======
+>>>>>>> 45d8063f36f7f73f25f2e5503b9e2eb50746571f
 	</array>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
@@ -2010,6 +2037,6 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.1.6beta3</string>
+	<string>3.1.beta.5</string>
 </dict>
 </plist>

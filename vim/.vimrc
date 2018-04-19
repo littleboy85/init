@@ -127,7 +127,8 @@ Plug 'mhinz/vim-startify'
 Plug 'terryma/vim-multiple-cursors'
 " Plug 'tpope/vim-unimpaired'
 if executable('ctags')
-    " Plug 'majutsushi/tagbar'
+    Plug 'majutsushi/tagbar'
+    " Plug 'xolox/vim-easytags'
 endif
 
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --bin '}
@@ -157,10 +158,10 @@ endfunction
 
 if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
-    Plug 'carlitux/deoplete-ternjs', {'on_ft': 'javascript'}
 else
     Plug 'Valloric/YouCompleteMe', {'do': './install.py --tern-completer --clang-completer'}
 endif
+
 Plug 'tpope/vim-surround'
 Plug 'Raimondi/delimitMate' " auto close quotes, parenthesise, brackets, etc.
 Plug 'tpope/vim-repeat'
@@ -188,6 +189,8 @@ Plug 'vim-scripts/indenthtml.vim'
 " javascript
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install && npm install -g tern' }
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 "Plug 'othree/javascript-libraries-syntax.vim'
 "Plug 'othree/yajs.vim'
 
@@ -682,6 +685,7 @@ let g:neomake_javascript_eslint_maker = {
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_jsx_enabled_makers = ['eslint']
 
+au BufWinEnter *.js :let b:neomake_javascript_eslint_exe =  system('PATH=$(pwd)/node_modules/.bin:$PATH && which eslint | tr -d "\n"')
 autocmd! BufWritePost * Neomake
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -736,6 +740,14 @@ endfunction
 function! Multiple_cursors_after()
     let b:deoplete_disable_auto_complete = 0
 endfunction
+
+
+"--------------------------------------------------
+" => ternjs/tern_for_vim
+"--------------------------------------------------
+let g:deoplete#sources#ternjs#types = 1
+let g:tern#command = ["tern"]
+let g:tern#arguments = ["--persistent"]
 
 "--------------------------------------------------
 " => junegunn/fzf
