@@ -5,8 +5,9 @@ fi
 source $ZPLUG_HOME/init.zsh 
 
 export TERM="xterm-256color"
-export PATH=$HOME/bin:/Users/xzhang/Library/Python/3.6/bin:/usr/local/bin:/usr/local/sbin:$PATH
+export PATH=$HOME/bin:/Users/xzhang/Library/Python/3.6/bin:PATH=$HOME/.composer/vendor/bin:/usr/local/bin:/usr/local/sbin:$PATH
 export REACT_EDITOR=nvim
+export GIT_EDITOR=nvim
 export EDITOR=nvim
 
 autoload -Uz colors; colors
