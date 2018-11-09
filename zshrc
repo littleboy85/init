@@ -5,7 +5,7 @@ fi
 source $ZPLUG_HOME/init.zsh 
 
 export TERM="xterm-256color"
-export PATH=$HOME/bin:/Users/xzhang/Library/Python/3.6/bin:PATH=$HOME/.composer/vendor/bin:/usr/local/bin:/usr/local/sbin:$PATH
+export PATH=$HOME/bin:/Users/xzhang/Library/Python/3.7/bin:PATH=$HOME/.composer/vendor/bin:/usr/local/bin:/usr/local/sbin:$PATH
 export REACT_EDITOR=nvim
 export GIT_EDITOR=nvim
 export EDITOR=nvim
@@ -16,9 +16,8 @@ setopt prompt_subst
 
 zplug "zplug/zplug"
 zplug "robbyrussell/oh-my-zsh", use:oh-my-zsh.sh
-zplug "~/init/zsh", from:local
-zplug "mafredri/zsh-async", on:sindresorhus/pure
-zplug "sindresorhus/pure", defer:2
+zplug "mafredri/zsh-async", from:github
+zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
 zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/thefuck", from:oh-my-zsh, defer:2
 zplug "plugins/autojump", from:oh-my-zsh, defer:2
@@ -37,11 +36,4 @@ zplug load --verbose
 setopt no_share_history
 
 alias nginxerror="tail -f /usr/local/var/log/nginx/error.log"
-unalias gm
 
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /Users/xzhang/projects/aws/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/xzhang/projects/aws/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /Users/xzhang/projects/aws/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/xzhang/projects/aws/node_modules/tabtab/.completions/sls.zsh
