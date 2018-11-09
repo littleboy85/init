@@ -5,7 +5,7 @@ fi
 source $ZPLUG_HOME/init.zsh 
 
 export TERM="xterm-256color"
-export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
+export PATH=$HOME/bin:/Users/xzhang/Library/Python/3.6/bin:/usr/local/bin:/usr/local/sbin:$PATH
 export REACT_EDITOR=nvim
 export EDITOR=nvim
 
@@ -36,3 +36,11 @@ zplug load --verbose
 setopt no_share_history
 
 alias nginxerror="tail -f /usr/local/var/log/nginx/error.log"
+unalias gm
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/xzhang/projects/aws/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/xzhang/projects/aws/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /Users/xzhang/projects/aws/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/xzhang/projects/aws/node_modules/tabtab/.completions/sls.zsh
